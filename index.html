@@ -3,131 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- COVER PHOTO -->
-<div id="cover" style="
-    position: fixed; top:0; left:0; width:100%; height:100%;
-    background: url('cover-photo.jpg') center/cover no-repeat;
-    display:flex; justify-content:center; align-items:center; cursor:pointer;
-    z-index:1000;
-">
-    <h1 style="color:white; font-size:40px; text-shadow: 2px 2px 8px black;">Tap to Enter</h1>
-</div>
-
-<title>Wedding Invitation</title>
-
+<title>Dinithi & Crishean Wedding Invitation</title>
 <style>
     body {
         margin: 0;
-        font-family: "Georgia", serif;
-        background: #f7f4ef;
-        color: #333;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
+        padding: 0;
+        font-family: "Times New Roman", Georgia, serif;
+        background-color: #f8f6f2;
+        overflow-x: hidden;
     }
 
-    .card {
-        max-width: 600px;
-        background: #ffffff;
-        padding: 40px 30px;
+    /* Cover */
+    #cover {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('cover.jpg') center/cover no-repeat;
+        cursor: pointer;
+        z-index: 10;
+        transition: opacity 1s ease;
+    }
+
+    /* Invitation card */
+    #card {
+        max-width: 700px;
+        margin: 80px auto;
+        padding: 40px;
+        background-color: #ffffff;
         text-align: center;
-        border: 1px solid #e0d8c8;
-        box-shadow: 0 0 50px rgba(194, 161, 95, 0.2);
+        border: 1px solid #ddd;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
         opacity: 0;
-        animation: fadeIn 3s forwards;
+        visibility: hidden;
+        transition: opacity 1s ease;
+        position: relative;
+        z-index: 5;
     }
 
-    @keyframes fadeIn {
-        0% {opacity: 0; transform: scale(0.9);}
-        100% {opacity: 1; transform: scale(1);}
+    h1 {
+        font-size: 28px;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
     }
 
-    .fade-section {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: sectionFade 2s forwards;
+    .parents, .details {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
     }
 
-    @keyframes sectionFade {
-        to {opacity: 1; transform: translateY(0);}
+    .names {
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 15px;
     }
 
-    .divider {
-        width: 60px;
-        height: 2px;
-        background: #c2a15f;
-        margin: 20px auto;
-        opacity: 0;
-        animation: dividerFade 2s forwards;
+    .section-title {
+        font-weight: bold;
+        margin-top: 20px;
     }
 
-    @keyframes dividerFade {
-        to {opacity: 1;}
+    .footer {
+        margin-top: 30px;
+        font-size: 15px;
+        font-style: italic;
     }
 
-    h1 { font-size: 32px; font-weight: normal; margin: 10px 0; }
-    h2 { font-size: 20px; font-weight: normal; margin: 20px 0 10px; }
-    p { font-size: 16px; line-height: 1.6; margin: 10px 0; }
-    .names { font-size: 28px; margin: 20px 0; }
-    .date { font-size: 18px; letter-spacing: 1px; margin: 20px 0; }
-    .footer { margin-top: 30px; font-size: 14px; color: #666; }
-    a { color: #333; text-decoration: none; border-bottom: 1px solid #c2a15f; }
-
+    /* Mute/Unmute button */
+    #muteBtn {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
 </style>
 </head>
-
 <body>
 
-<audio autoplay loop>
-    <source src="wedding-music.mpeg" type="audio/mpeg">
-</audio>
+<!-- Cover Image -->
+<div id="cover"></div>
 
-<div class="card">
-    <p class="fade-section" style="animation-delay: 0.5s;">With the blessings of our parents</p>
-    <div class="divider" style="animation-delay: 1s;"></div>
+<!-- Invitation Card -->
+<div id="card">
+    <!-- Mute/Unmute Icon -->
+    <img id="muteBtn" src="mute-icon.png" alt="Mute/Unmute">
 
-    <div class="names fade-section" style="animation-delay: 1.5s;">
-        Crishean <br>&amp;<br> Dinithi
+    <h1>WEDDING INVITATION</h1>
+
+    <div class="parents">
+        Mr. Nelson Miral and Mrs. Kumari Miral<br>
+        and<br>
+        Mr. Lucian Anthony and Mrs. Maire Perera
     </div>
 
-    <p class="fade-section" style="animation-delay: 2s;">joyfully invite you to celebrate the sacrament of our marriage</p>
+    <div class="names">Dinithi Miral</div>
+    <div>Daughter of Mr. Nelson Miral and Mrs. Kumari Miral</div>
 
-    <div class="divider" style="animation-delay: 2.5s;"></div>
+    <div class="names">Crishean Anthony</div>
+    <div>Son of Mr. Lucian Anthony and Mrs. Maire Perera</div>
 
-    <div class="date fade-section" style="animation-delay: 3s;">
-        Saturday, 16th May 2026 <br> at 9.30 in the morning
+    <div class="details">joyfully invite you to celebrate the sacrament of our marriage.</div>
+
+    <div class="details">
+        <div class="section-title">Date</div>
+        Saturday, 16th May 2026
+
+        <div class="section-title">Time</div>
+        9.30 a.m.
+
+        <div class="section-title">Venue</div>
+        St. Sylvester Church<br>
+        Ettukala, Negombo<br>
+        (6RPV+CH5, Ettukala Road, Negombo 11500)
+
+        <div class="section-title">Reception</div>
+        Golden Star Hotel – Negombo
     </div>
 
-    <h2 class="fade-section" style="animation-delay: 3.5s;">The Holy Eucharist</h2>
-    <p class="fade-section" style="animation-delay: 4s;">
-        St. Mary’s Church <br> Colombo
-    </p>
-
-    <h2 class="fade-section" style="animation-delay: 4.5s;">Reception</h2>
-    <p class="fade-section" style="animation-delay: 5s;">
-        Immediately following the ceremony <br> at The Grand Ballroom <br> Colombo
-    </p>
-
-    <div class="divider" style="animation-delay: 5.5s;"></div>
-
-    <p class="fade-section" style="animation-delay: 6s;">
-        <a href="https://maps.google.com" target="_blank">
-            View Location on Google Maps
-        </a>
-    </p>
-
-    <div class="footer fade-section" style="animation-delay: 6.5s;">
-        We look forward to your prayers and presence
-    </div>
+    <div class="footer">We look forward to your prayers and presence.</div>
 </div>
 
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="wedding-music.mpeg" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
 <script>
-    // Delay animations for each fade-section
-    document.querySelectorAll('.fade-section').forEach((el) => {
-        const delay = el.style.animationDelay;
-        el.style.animation = `sectionFade 2s forwards ${delay}`;
+    // Fade cover, show card
+    const cover = document.getElementById("cover");
+    const card = document.getElementById("card");
+    cover.addEventListener("click", () => {
+        cover.style.opacity = 0;
+        setTimeout(() => cover.style.display = "none", 1000);
+        card.style.visibility = "visible";
+        card.style.opacity = 1;
+    });
+
+    // Mute/Unmute music
+    const music = document.getElementById("bgMusic");
+    const muteBtn = document.getElementById("muteBtn");
+    let isPlaying = false;
+
+    muteBtn.addEventListener("click", () => {
+        if (!isPlaying) {
+            music.play();
+            muteBtn.src = "unmute-icon.png"; // Change to your unmute icon
+            isPlaying = true;
+        } else {
+            music.pause();
+            muteBtn.src = "mute-icon.png"; // Back to mute icon
+            isPlaying = false;
+        }
     });
 </script>
 
