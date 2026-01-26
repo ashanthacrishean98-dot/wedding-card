@@ -68,11 +68,19 @@
 </head>
 
 <body>
-    
-<audio autoplay loop>
+
+<audio id="bgMusic" loop>
     <source src="wedding-music.mpeg" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
+
+<script>
+    document.body.addEventListener("click", function () {
+        const music = document.getElementById("bgMusic");
+        music.play();
+    }, { once: true });
+</script>
+
 
 <div class="card">
     <p class="fade-section" style="animation-delay: 0.5s;">With the blessings of our parents</p>
