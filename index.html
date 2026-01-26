@@ -11,25 +11,36 @@
         font-family: "Georgia", serif;
         background: #f7f4ef;
         color: #333;
-        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
 
     .card {
         max-width: 600px;
-        margin: 60px auto;
         background: #ffffff;
         padding: 40px 30px;
         text-align: center;
         border: 1px solid #e0d8c8;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 0 50px rgba(194, 161, 95, 0.2);
         opacity: 0;
-        animation: fadeIn 2s forwards;
+        animation: fadeIn 3s forwards;
+    }
+
+    @keyframes fadeIn {
+        0% {opacity: 0; transform: scale(0.9);}
+        100% {opacity: 1; transform: scale(1);}
     }
 
     .fade-section {
         opacity: 0;
         transform: translateY(20px);
-        animation: fadeUp 2s forwards;
+        animation: sectionFade 2s forwards;
+    }
+
+    @keyframes sectionFade {
+        to {opacity: 1; transform: translateY(0);}
     }
 
     .divider {
@@ -37,59 +48,22 @@
         height: 2px;
         background: #c2a15f;
         margin: 20px auto;
+        opacity: 0;
+        animation: dividerFade 2s forwards;
     }
 
-    h1 {
-        font-size: 32px;
-        font-weight: normal;
-        margin: 10px 0;
+    @keyframes dividerFade {
+        to {opacity: 1;}
     }
 
-    h2 {
-        font-size: 20px;
-        font-weight: normal;
-        margin: 20px 0 10px;
-    }
+    h1 { font-size: 32px; font-weight: normal; margin: 10px 0; }
+    h2 { font-size: 20px; font-weight: normal; margin: 20px 0 10px; }
+    p { font-size: 16px; line-height: 1.6; margin: 10px 0; }
+    .names { font-size: 28px; margin: 20px 0; }
+    .date { font-size: 18px; letter-spacing: 1px; margin: 20px 0; }
+    .footer { margin-top: 30px; font-size: 14px; color: #666; }
+    a { color: #333; text-decoration: none; border-bottom: 1px solid #c2a15f; }
 
-    p {
-        font-size: 16px;
-        line-height: 1.6;
-        margin: 10px 0;
-    }
-
-    .names {
-        font-size: 28px;
-        margin: 20px 0;
-    }
-
-    .date {
-        font-size: 18px;
-        letter-spacing: 1px;
-        margin: 20px 0;
-    }
-
-    .footer {
-        margin-top: 30px;
-        font-size: 14px;
-        color: #666;
-    }
-
-    a {
-        color: #333;
-        text-decoration: none;
-        border-bottom: 1px solid #c2a15f;
-    }
-
-    @keyframes fadeUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes fadeIn {
-        to { opacity: 1; }
-    }
 </style>
 </head>
 
@@ -97,62 +71,54 @@
 
 <!-- Background Music -->
 <audio autoplay loop>
-    <source src="wedding music.mpeg" type="audio/MPEG">
-    Your browser does not support the audio element.
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
 </audio>
 
 <div class="card">
-    <div class="fade-section" style="animation-delay: 0.5s;">
-        <p>With the blessings of our parents</p>
-        <div class="divider"></div>
+    <p class="fade-section" style="animation-delay: 0.5s;">With the blessings of our parents</p>
+    <div class="divider" style="animation-delay: 1s;"></div>
+
+    <div class="names fade-section" style="animation-delay: 1.5s;">
+        Crishean <br>&amp;<br> Dinithi
     </div>
 
-    <div class="fade-section" style="animation-delay: 1.5s;">
-        <div class="names">
-            Crishean <br>&amp;<br> Dinithi
-        </div>
-        <p>joyfully invite you to celebrate the sacrament of our marriage</p>
-        <div class="divider"></div>
+    <p class="fade-section" style="animation-delay: 2s;">joyfully invite you to celebrate the sacrament of our marriage</p>
+
+    <div class="divider" style="animation-delay: 2.5s;"></div>
+
+    <div class="date fade-section" style="animation-delay: 3s;">
+        Saturday, 16th May 2026 <br> at 9.30 in the morning
     </div>
 
-    <div class="fade-section" style="animation-delay: 3s;">
-        <div class="date">
-            Saturday, 16th May 2026 <br>
-            at 9.30 in the morning
-        </div>
+    <h2 class="fade-section" style="animation-delay: 3.5s;">The Holy Eucharist</h2>
+    <p class="fade-section" style="animation-delay: 4s;">
+        St. Mary’s Church <br> Colombo
+    </p>
 
-        <h2>The Holy Eucharist</h2>
-        <p>
-            St. Mary’s Church <br>
-            Colombo
-        </p>
+    <h2 class="fade-section" style="animation-delay: 4.5s;">Reception</h2>
+    <p class="fade-section" style="animation-delay: 5s;">
+        Immediately following the ceremony <br> at The Grand Ballroom <br> Colombo
+    </p>
 
-        <h2>Reception</h2>
-        <p>
-            Immediately following the ceremony <br>
-            at The Grand Ballroom <br>
-            Colombo
-        </p>
-        <div class="divider"></div>
-    </div>
+    <div class="divider" style="animation-delay: 5.5s;"></div>
 
-    <div class="fade-section" style="animation-delay: 4.5s;">
-        <p>
-            <a href="https://maps.google.com" target="_blank">
-                View Location on Google Maps
-            </a>
-        </p>
-        <div class="footer">
-            We look forward to your prayers and presence
-        </div>
+    <p class="fade-section" style="animation-delay: 6s;">
+        <a href="https://maps.google.com" target="_blank">
+            View Location on Google Maps
+        </a>
+    </p>
+
+    <div class="footer fade-section" style="animation-delay: 6.5s;">
+        We look forward to your prayers and presence
     </div>
 </div>
 
 <script>
-    // Apply animation delay to each fade-section
-    const sections = document.querySelectorAll('.fade-section');
-    sections.forEach((section, i) => {
-        section.style.animationDelay = `${0.5 + i * 1.5}s`;
+    // Delay animations for each fade-section
+    document.querySelectorAll('.fade-section').forEach((el) => {
+        const delay = el.style.animationDelay;
+        el.style.animation = `sectionFade 2s forwards ${delay}`;
     });
 </script>
 
