@@ -26,6 +26,7 @@
         box-shadow: 0 0 50px rgba(194, 161, 95, 0.2);
         opacity: 0;
         animation: fadeIn 3s forwards;
+        cursor: pointer;
     }
 
     @keyframes fadeIn {
@@ -63,17 +64,17 @@
     .date { font-size: 18px; letter-spacing: 1px; margin: 20px 0; }
     .footer { margin-top: 30px; font-size: 14px; color: #666; }
     a { color: #333; text-decoration: none; border-bottom: 1px solid #c2a15f; }
-
 </style>
 </head>
+
+<body>
+
 <audio id="bgMusic" loop>
     <source src="wedding-music.mpeg" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
 
-<body>
-
-<div class="card">
+<div class="card" id="invitationCard">
     <p class="fade-section" style="animation-delay: 0.5s;">With the blessings of our parents</p>
     <div class="divider" style="animation-delay: 1s;"></div>
 
@@ -113,11 +114,19 @@
 </div>
 
 <script>
-    // Delay animations for each fade-section
+    // Animate fade-sections
     document.querySelectorAll('.fade-section').forEach((el) => {
         const delay = el.style.animationDelay;
         el.style.animation = `sectionFade 2s forwards ${delay}`;
     });
+
+    // Play music on first click anywhere on the card
+    const card = document.getElementById('invitationCard');
+    const music = document.getElementById('bgMusic');
+
+    card.addEventListener('click', () => {
+        music.play().catch(err => console.log(err));
+    }, { once: true });
 </script>
 
 </body>
