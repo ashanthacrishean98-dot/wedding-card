@@ -15,7 +15,7 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        overflow-x: hidden;
+        overflow: hidden;
     }
 
     /* COVER SCREEN */
@@ -34,7 +34,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        -webkit-transform: translateZ(0); /* fixes iPhone rendering */
+        -webkit-transform: translateZ(0);
     }
 
     .cover-text {
@@ -63,7 +63,6 @@
         border: 1px solid #e0d8c8;
         box-shadow: 0 0 50px rgba(194, 161, 95, 0.2);
         opacity: 0;
-        animation: fadeIn 3s forwards;
     }
 
     @keyframes fadeIn {
@@ -94,43 +93,70 @@
         to { opacity: 1; }
     }
 
-    h2 { font-size: 20px; font-weight: normal; margin: 20px 0 10px; }
-    p { font-size: 16px; line-height: 1.6; margin: 10px 0; }
-    .names { font-size: 28px; margin: 20px 0; }
-    .date { font-size: 18px; letter-spacing: 1px; margin: 20px 0; }
-    .footer { margin-top: 30px; font-size: 14px; color: #666; }
-    a { color: #333; text-decoration: none; border-bottom: 1px solid #c2a15f; }
-
-    /* SPARKLES */
-    #sparkle-container {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        overflow: hidden;
-        z-index: 9;
+    h2 {
+        font-size: 20px;
+        font-weight: normal;
+        margin: 20px 0 10px;
     }
 
-    .sparkle {
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 10px 0;
+    }
+
+    .names {
+        font-size: 28px;
+        margin: 20px 0;
+    }
+
+    .date {
+        font-size: 18px;
+        letter-spacing: 1px;
+        margin: 20px 0;
+    }
+
+    .footer {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    a {
+        color: #333;
+        text-decoration: none;
+        border-bottom: 1px solid #c2a15f;
+    }
+
+    /* GOLD PARTICLES */
+    #particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: visible;
+        z-index: 20;
+    }
+
+    .particle {
         position: absolute;
         width: 6px;
         height: 6px;
         background: gold;
         border-radius: 50%;
-        opacity: 0;
-        animation: sparkleAnim 1s forwards;
+        opacity: 0.9;
+        animation: sparkle 1.5s forwards;
     }
 
-    @keyframes sparkleAnim {
+    @keyframes sparkle {
         0% {
-            transform: translateY(0) scale(0.5);
-            opacity: 1;
-        }
-        50% {
-            transform: translateY(-50px) scale(1.2);
+            transform: translate(0,0) scale(0.5);
             opacity: 1;
         }
         100% {
-            transform: translateY(-100px) scale(0);
+            transform: translate(var(--x), var(--y)) scale(1.5);
             opacity: 0;
         }
     }
@@ -139,19 +165,19 @@
 
 <body>
 
-<!-- MUSIC -->
+<!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" loop>
     <source src="wedding-music.mpeg" type="audio/mpeg">
 </audio>
 
-<!-- SPARKLES -->
-<div id="sparkle-container"></div>
-
-<!-- COVER PHOTO -->
+<!-- COVER SCREEN -->
 <div class="cover" id="cover">
     <img src="cover-photo.jpg" alt="Wedding Cover">
     <div class="cover-text">Tap to Open Invitation</div>
 </div>
+
+<!-- PARTICLE CONTAINER -->
+<div id="particles"></div>
 
 <!-- INVITATION CARD -->
 <div class="card" id="invitationCard">
@@ -200,43 +226,55 @@
 
     <p class="fade-section" style="animation-delay: 6s;">
         <a href="https://www.google.com/maps/place/St.+Mary's+Church,+Colombo/@6.9271,79.8612,17z" target="_blank">
-            View Church Location
+            View Church Location on Google Maps
         </a>
     </p>
 
     <p class="fade-section" style="animation-delay: 6.5s;">
         <a href="https://www.google.com/maps/place/The+Grand+Ballroom,+Colombo/@6.9275,79.8618,17z" target="_blank">
-            View Reception Location
+            View Reception Location on Google Maps
         </a>
     </p>
 
     <div class="footer fade-section" style="animation-delay: 7s;">
         We look forward to your prayers and presence
     </div>
+
 </div>
 
 <script>
     const cover = document.getElementById('cover');
     const card = document.getElementById('invitationCard');
     const music = document.getElementById('bgMusic');
-    const sparkleContainer = document.getElementById('sparkle-container');
 
-    function createSparkles() {
-        const sparkleCount = 50;
-        for (let i = 0; i < sparkleCount; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = Math.random() * window.innerWidth + 'px';
-            sparkle.style.top = (window.innerHeight / 2) + Math.random() * 200 + 'px';
-            sparkle.style.width = (Math.random() * 4 + 3) + 'px';
-            sparkle.style.height = sparkle.style.width;
-            sparkle.style.animationDelay = (Math.random() * 0.5) + 's';
-            sparkleContainer.appendChild(sparkle);
+    // Function to create gold particles
+    function createParticles() {
+        const particleCount = 100; // more particles for bigger celebration
+        const container = document.getElementById('particles');
 
-            sparkle.addEventListener('animationend', () => sparkle.remove());
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            // Random direction and distance
+            const x = (Math.random() - 0.5) * 600 + 'px'; // wider spread
+            const y = (Math.random() - 0.5) * 400 + 'px';
+            particle.style.setProperty('--x', x);
+            particle.style.setProperty('--y', y);
+
+            // Random delay for sparkle effect
+            particle.style.animationDelay = (Math.random() * 0.5) + 's';
+
+            container.appendChild(particle);
+
+            // Remove particle after animation
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
         }
     }
 
+    // Cover click logic
     cover.addEventListener('click', () => {
         cover.classList.add('fade-out');
 
@@ -244,14 +282,17 @@
             cover.style.display = 'none';
             card.style.display = 'block';
 
+            // Play music
             music.play().catch(() => {});
 
+            // Trigger fade-in animations
             document.querySelectorAll('.fade-section').forEach(el => {
                 const delay = el.style.animationDelay;
                 el.style.animation = `sectionFade 2s forwards ${delay}`;
             });
 
-            createSparkles(); // Sparkles trigger once
+            // Create gold particle celebration
+            createParticles();
 
         }, 1200);
     });
