@@ -15,7 +15,6 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        overflow: hidden;
     }
 
     /* COVER SCREEN */
@@ -34,7 +33,6 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        -webkit-transform: translateZ(0);
     }
 
     .cover-text {
@@ -63,6 +61,7 @@
         border: 1px solid #e0d8c8;
         box-shadow: 0 0 50px rgba(194, 161, 95, 0.2);
         opacity: 0;
+        animation: fadeIn 3s forwards;
     }
 
     @keyframes fadeIn {
@@ -127,39 +126,6 @@
         text-decoration: none;
         border-bottom: 1px solid #c2a15f;
     }
-
-    /* GOLD PARTICLES */
-    #particles {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        overflow: visible;
-        z-index: 20;
-    }
-
-    .particle {
-        position: absolute;
-        width: 6px;
-        height: 6px;
-        background: gold;
-        border-radius: 50%;
-        opacity: 0.9;
-        animation: sparkle 1.5s forwards;
-    }
-
-    @keyframes sparkle {
-        0% {
-            transform: translate(0,0) scale(0.5);
-            opacity: 1;
-        }
-        100% {
-            transform: translate(var(--x), var(--y)) scale(1.5);
-            opacity: 0;
-        }
-    }
 </style>
 </head>
 
@@ -172,12 +138,9 @@
 
 <!-- COVER SCREEN -->
 <div class="cover" id="cover">
-    <img src="cover-photo.jpg" alt="Wedding Cover">
+    <img src="cover-photo.png" alt="Wedding Cover">
     <div class="cover-text">Tap to Open Invitation</div>
 </div>
-
-<!-- PARTICLE CONTAINER -->
-<div id="particles"></div>
 
 <!-- INVITATION CARD -->
 <div class="card" id="invitationCard">
@@ -208,8 +171,8 @@
     </h2>
 
     <p class="fade-section" style="animation-delay: 4s;">
-        St. Mary’s Church <br>
-        Colombo
+        St. Sylvester church, Ettukala <br>
+        Negombo
     </p>
 
     <h2 class="fade-section" style="animation-delay: 4.5s;">
@@ -225,18 +188,12 @@
     <div class="divider" style="animation-delay: 5.5s;"></div>
 
     <p class="fade-section" style="animation-delay: 6s;">
-        <a href="https://www.google.com/maps/place/St.+Mary's+Church,+Colombo/@6.9271,79.8612,17z" target="_blank">
-            View Church Location on Google Maps
+        <a href="https://maps.app.goo.gl/X3GXXFcj5q9gLPss8" target="_blank">
+            View Location on Google Maps
         </a>
     </p>
 
-    <p class="fade-section" style="animation-delay: 6.5s;">
-        <a href="https://www.google.com/maps/place/The+Grand+Ballroom,+Colombo/@6.9275,79.8618,17z" target="_blank">
-            View Reception Location on Google Maps
-        </a>
-    </p>
-
-    <div class="footer fade-section" style="animation-delay: 7s;">
+    <div class="footer fade-section" style="animation-delay: 6.5s;">
         We look forward to your prayers and presence
     </div>
 
@@ -247,52 +204,20 @@
     const card = document.getElementById('invitationCard');
     const music = document.getElementById('bgMusic');
 
-    // Function to create gold particles
-    function createParticles() {
-        const particleCount = 100; // more particles for bigger celebration
-        const container = document.getElementById('particles');
-
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-
-            // Random direction and distance
-            const x = (Math.random() - 0.5) * 600 + 'px'; // wider spread
-            const y = (Math.random() - 0.5) * 400 + 'px';
-            particle.style.setProperty('--x', x);
-            particle.style.setProperty('--y', y);
-
-            // Random delay for sparkle effect
-            particle.style.animationDelay = (Math.random() * 0.5) + 's';
-
-            container.appendChild(particle);
-
-            // Remove particle after animation
-            particle.addEventListener('animationend', () => {
-                particle.remove();
-            });
-        }
-    }
-
-    // Cover click logic
     cover.addEventListener('click', () => {
+
         cover.classList.add('fade-out');
 
         setTimeout(() => {
             cover.style.display = 'none';
             card.style.display = 'block';
 
-            // Play music
             music.play().catch(() => {});
 
-            // Trigger fade-in animations
             document.querySelectorAll('.fade-section').forEach(el => {
                 const delay = el.style.animationDelay;
                 el.style.animation = `sectionFade 2s forwards ${delay}`;
             });
-
-            // Create gold particle celebration
-            createParticles();
 
         }, 1200);
     });
