@@ -17,7 +17,43 @@
         min-height: 100vh;
     }
 
+    /* COVER SCREEN */
+    .cover {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cover-text {
+        position: absolute;
+        bottom: 40px;
+        color: #fff;
+        font-size: 16px;
+        letter-spacing: 1px;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 12px 24px;
+    }
+
+    .cover.fade-out {
+        opacity: 0;
+        transition: opacity 1.5s ease;
+        pointer-events: none;
+    }
+
+    /* CARD */
     .card {
+        display: none;
         max-width: 600px;
         background: #ffffff;
         padding: 40px 30px;
@@ -26,12 +62,11 @@
         box-shadow: 0 0 50px rgba(194, 161, 95, 0.2);
         opacity: 0;
         animation: fadeIn 3s forwards;
-        cursor: pointer;
     }
 
     @keyframes fadeIn {
-        0% {opacity: 0; transform: scale(0.9);}
-        100% {opacity: 1; transform: scale(1);}
+        0% { opacity: 0; transform: scale(0.9); }
+        100% { opacity: 1; transform: scale(1); }
     }
 
     .fade-section {
@@ -41,7 +76,7 @@
     }
 
     @keyframes sectionFade {
-        to {opacity: 1; transform: translateY(0);}
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .divider {
@@ -54,50 +89,100 @@
     }
 
     @keyframes dividerFade {
-        to {opacity: 1;}
+        to { opacity: 1; }
     }
 
-    h1 { font-size: 32px; font-weight: normal; margin: 10px 0; }
-    h2 { font-size: 20px; font-weight: normal; margin: 20px 0 10px; }
-    p { font-size: 16px; line-height: 1.6; margin: 10px 0; }
-    .names { font-size: 28px; margin: 20px 0; }
-    .date { font-size: 18px; letter-spacing: 1px; margin: 20px 0; }
-    .footer { margin-top: 30px; font-size: 14px; color: #666; }
-    a { color: #333; text-decoration: none; border-bottom: 1px solid #c2a15f; }
+    h2 {
+        font-size: 20px;
+        font-weight: normal;
+        margin: 20px 0 10px;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 10px 0;
+    }
+
+    .names {
+        font-size: 28px;
+        margin: 20px 0;
+    }
+
+    .date {
+        font-size: 18px;
+        letter-spacing: 1px;
+        margin: 20px 0;
+    }
+
+    .footer {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    a {
+        color: #333;
+        text-decoration: none;
+        border-bottom: 1px solid #c2a15f;
+    }
 </style>
 </head>
 
 <body>
 
+<!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" loop>
     <source src="wedding-music.mpeg" type="audio/mpeg">
-    Your browser does not support the audio element.
 </audio>
 
+<!-- COVER SCREEN -->
+<div class="cover" id="cover">
+    <img src="cover-photo.jpg" alt="Wedding Cover">
+    <div class="cover-text">Tap to Open Invitation</div>
+</div>
+
+<!-- INVITATION CARD -->
 <div class="card" id="invitationCard">
-    <p class="fade-section" style="animation-delay: 0.5s;">With the blessings of our parents</p>
+
+    <p class="fade-section" style="animation-delay: 0.5s;">
+        With the blessings of our parents
+    </p>
+
     <div class="divider" style="animation-delay: 1s;"></div>
 
     <div class="names fade-section" style="animation-delay: 1.5s;">
         Crishean <br>&amp;<br> Dinithi
     </div>
 
-    <p class="fade-section" style="animation-delay: 2s;">joyfully invite you to celebrate the sacrament of our marriage</p>
+    <p class="fade-section" style="animation-delay: 2s;">
+        joyfully invite you to celebrate the sacrament of our marriage
+    </p>
 
     <div class="divider" style="animation-delay: 2.5s;"></div>
 
     <div class="date fade-section" style="animation-delay: 3s;">
-        Saturday, 16th May 2026 <br> at 9.30 in the morning
+        Saturday, 16th May 2026 <br>
+        at 9.30 in the morning
     </div>
 
-    <h2 class="fade-section" style="animation-delay: 3.5s;">The Holy Eucharist</h2>
+    <h2 class="fade-section" style="animation-delay: 3.5s;">
+        The Holy Eucharist
+    </h2>
+
     <p class="fade-section" style="animation-delay: 4s;">
-        St. Mary’s Church <br> Colombo
+        St. Mary’s Church <br>
+        Colombo
     </p>
 
-    <h2 class="fade-section" style="animation-delay: 4.5s;">Reception</h2>
+    <h2 class="fade-section" style="animation-delay: 4.5s;">
+        Reception
+    </h2>
+
     <p class="fade-section" style="animation-delay: 5s;">
-        Immediately following the ceremony <br> at The Grand Ballroom <br> Colombo
+        Immediately following the ceremony <br>
+        at The Grand Ballroom <br>
+        Colombo
     </p>
 
     <div class="divider" style="animation-delay: 5.5s;"></div>
@@ -111,22 +196,31 @@
     <div class="footer fade-section" style="animation-delay: 6.5s;">
         We look forward to your prayers and presence
     </div>
+
 </div>
 
 <script>
-    // Animate fade-sections
-    document.querySelectorAll('.fade-section').forEach((el) => {
-        const delay = el.style.animationDelay;
-        el.style.animation = `sectionFade 2s forwards ${delay}`;
-    });
-
-    // Play music on first click anywhere on the card
+    const cover = document.getElementById('cover');
     const card = document.getElementById('invitationCard');
     const music = document.getElementById('bgMusic');
 
-    card.addEventListener('click', () => {
-        music.play().catch(err => console.log(err));
-    }, { once: true });
+    cover.addEventListener('click', () => {
+
+        cover.classList.add('fade-out');
+
+        setTimeout(() => {
+            cover.style.display = 'none';
+            card.style.display = 'block';
+
+            music.play().catch(() => {});
+
+            document.querySelectorAll('.fade-section').forEach(el => {
+                const delay = el.style.animationDelay;
+                el.style.animation = `sectionFade 2s forwards ${delay}`;
+            });
+
+        }, 1200);
+    });
 </script>
 
 </body>
