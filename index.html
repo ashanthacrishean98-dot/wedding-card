@@ -13,6 +13,7 @@ body {
     font-family: "Libre Baskerville", serif;
     background: #f7f4ef;
     color: #333;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* COVER */
@@ -35,17 +36,18 @@ body {
 
 .cover-text {
     position: absolute;
-    bottom: 40px;
+    bottom: 30px;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 1px;
     background: rgba(0,0,0,0.4);
-    padding: 12px 24px;
+    padding: 10px 18px;
+    border-radius: 4px;
 }
 
 .cover.fade-out {
     opacity: 0;
-    transition: 1.5s ease;
+    transition: 1.2s ease;
     pointer-events: none;
 }
 
@@ -56,7 +58,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 40px 20px;
+    padding: 50px 20px;
 }
 
 .hero {
@@ -76,33 +78,53 @@ body {
     background: #f7f4ef;
 }
 
-.divider {
-    width: 60px;
-    height: 2px;
-    background: #c2a15f;
-    margin: 20px auto;
-}
-
 /* TEXT */
 .names {
-    font-size: 32px;
-    margin: 20px 0;
+    font-size: 28px;
+    line-height: 1.4;
+    margin: 15px 0;
 }
 
 h2 {
+    font-size: 18px;
     font-weight: normal;
     margin: 10px 0;
 }
 
 p {
+    font-size: 15px;
     line-height: 1.6;
+    margin: 8px 0;
 }
 
-/* FADE ANIMATION */
+/* DIVIDER */
+.divider {
+    width: 50px;
+    height: 2px;
+    background: #c2a15f;
+    margin: 18px auto;
+}
+
+/* MAP */
+iframe {
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+}
+
+/* LINK */
+a {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #c2a15f;
+    padding-bottom: 2px;
+}
+
+/* ANIMATION */
 .hidden {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease;
+    transform: translateY(25px);
+    transition: all 0.8s ease;
 }
 
 .show {
@@ -114,8 +136,29 @@ html {
     scroll-behavior: smooth;
 }
 
-iframe {
-    border: 0;
+/* MOBILE IMPROVEMENTS */
+@media (max-width: 480px) {
+
+    .section {
+        padding: 60px 18px;
+    }
+
+    .names {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .cover-text {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
 }
 </style>
 </head>
@@ -129,12 +172,11 @@ iframe {
 
 <!-- COVER -->
 <div class="cover" id="cover">
-    <img src="Custom Card.jpg">
+    <img src="Custom Card.jpg" alt="Wedding Cover">
     <div class="cover-text">Tap to Open Invitation</div>
 </div>
 
-<!-- CONTENT -->
-
+<!-- HERO -->
 <section class="section hero">
     <div>
         <p>With the blessings of our parents</p>
@@ -148,6 +190,7 @@ iframe {
     </div>
 </section>
 
+<!-- STORY -->
 <section class="section story">
     <div>
         <h2>Our Story</h2>
@@ -159,6 +202,7 @@ iframe {
     </div>
 </section>
 
+<!-- DETAILS -->
 <section class="section details">
     <div>
         <h2>Wedding Day</h2>
@@ -184,23 +228,23 @@ iframe {
     </div>
 </section>
 
+<!-- LOCATION -->
 <section class="section location">
-    <div style="width:100%; max-width:600px;">
+    <div style="width:100%; max-width:500px;">
         <h2>Location</h2>
         <div class="divider"></div>
 
         <iframe 
-            src="https://www.google.com/maps?q=St+Sylvester+Church+Negombo&output=embed"
-            width="100%" height="300">
+            src="https://www.google.com/maps?q=St+Sylvester+Church+Negombo&output=embed">
         </iframe>
 
-        <p style="margin-top:15px;">
+        <p style="margin-top:12px;">
             <a href="https://maps.app.goo.gl/X3GXXFcj5q9gLPss8" target="_blank">
                 View on Google Maps
             </a>
         </p>
 
-        <p style="margin-top:20px;">
+        <p style="margin-top:18px;">
             We look forward to your prayers and presence
         </p>
     </div>
@@ -216,7 +260,7 @@ cover.addEventListener('click', () => {
     setTimeout(() => {
         cover.style.display = 'none';
         music.play().catch(() => {});
-    }, 1200);
+    }, 1000);
 });
 
 /* SCROLL ANIMATION */
