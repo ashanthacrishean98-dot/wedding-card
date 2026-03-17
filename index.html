@@ -3,201 +3,223 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crishean & Dinithi</title>
+<title>Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 <style>
 body {
-    margin:0;
-    font-family:'Montserrat', sans-serif;
-    background:#000;
-    color:#fff;
-    overflow-x:hidden;
+    margin: 0;
+    font-family: "Libre Baskerville", serif;
+    background: #f7f4ef;
+    color: #333;
 }
 
-h1,h2 {
-    font-family:'Playfair Display', serif;
+/* COVER */
+.cover {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
 }
 
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-text {
+    position: absolute;
+    bottom: 40px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: rgba(0,0,0,0.4);
+    padding: 12px 24px;
+}
+
+.cover.fade-out {
+    opacity: 0;
+    transition: 1.5s ease;
+    pointer-events: none;
+}
+
+/* SECTIONS */
 .section {
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:40px 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
 }
 
 .hero {
-    background:url('cover.jpg') center/cover no-repeat;
+    background: #000;
+    color: #fff;
 }
 
-.overlay {
-    background:rgba(0,0,0,0.6);
-    position:absolute;
-    inset:0;
+.story {
+    background: #f7f4ef;
 }
 
-.hero-content {
-    position:relative;
-    z-index:2;
+.details {
+    background: #fff;
 }
 
-.names {
-    font-size:42px;
-    letter-spacing:2px;
-}
-
-.section.light {
-    background:#f7f4ef;
-    color:#333;
-}
-
-.section.dark {
-    background:#000;
+.location {
+    background: #f7f4ef;
 }
 
 .divider {
-    width:60px;
-    height:2px;
-    background:#c2a15f;
-    margin:20px auto;
+    width: 60px;
+    height: 2px;
+    background: #c2a15f;
+    margin: 20px auto;
 }
 
-.gallery {
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
+/* TEXT */
+.names {
+    font-size: 32px;
+    margin: 20px 0;
 }
 
-.gallery img {
-    width:100%;
-    border-radius:10px;
+h2 {
+    font-weight: normal;
+    margin: 10px 0;
 }
 
-.countdown {
-    font-size:24px;
-    letter-spacing:1px;
+p {
+    line-height: 1.6;
 }
 
-iframe {
-    border:0;
-    border-radius:10px;
-}
-
+/* FADE ANIMATION */
 .hidden {
-    opacity:0;
-    transform:translateY(40px);
-    transition:1.2s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
 }
 
 .show {
-    opacity:1;
-    transform:translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+iframe {
+    border: 0;
+}
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="wedding-music.mpeg" type="audio/mpeg">
+</audio>
+
+<!-- COVER -->
+<div class="cover" id="cover">
+    <img src="Custom Card.jpg">
+    <div class="cover-text">Tap to Open Invitation</div>
+</div>
+
+<!-- CONTENT -->
+
 <section class="section hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-        <p>Selected by God</p>
-        <div class="names">Crishean & Dinithi</div>
-        <p>16 May 2026</p>
+    <div>
+        <p>With the blessings of our parents</p>
+        <div class="divider"></div>
+
+        <div class="names">
+            Crishean <br>&amp;<br> Dinithi
+        </div>
+
+        <p>joyfully invite you to celebrate our marriage</p>
     </div>
 </section>
 
-<!-- STORY -->
-<section class="section light hidden">
+<section class="section story">
     <div>
         <h2>Our Story</h2>
         <div class="divider"></div>
         <p>
-            In a world of countless souls, God chose us,
+            In a world of countless souls, God chose us,  
             and in that choice, our story quietly began.
         </p>
     </div>
 </section>
 
-<!-- COUNTDOWN -->
-<section class="section dark hidden">
+<section class="section details">
     <div>
-        <h2>Counting the Days</h2>
+        <h2>Wedding Day</h2>
         <div class="divider"></div>
-        <div class="countdown" id="countdown"></div>
-    </div>
-</section>
 
-<!-- DETAILS -->
-<section class="section light hidden">
-    <div>
+        <p>
+            Saturday, 16th May 2026 <br>
+            at 9.30 in the morning
+        </p>
+
         <h2>The Holy Eucharist</h2>
-        <p>9.30 in the morning</p>
-        <p>St. Sylvester Church, Negombo</p>
-
-        <div class="divider"></div>
+        <p>
+            St. Sylvester Church, Ettukala <br>
+            Negombo
+        </p>
 
         <h2>Reception</h2>
-        <p>Immediately following</p>
-        <p>The Grand Ballroom, Colombo</p>
+        <p>
+            Immediately following the ceremony <br>
+            The Grand Ballroom <br>
+            Colombo
+        </p>
     </div>
 </section>
 
-<!-- GALLERY -->
-<section class="section dark hidden">
-    <div class="gallery">
-        <img src="img1.jpg">
-        <img src="img2.jpg">
-        <img src="img3.jpg">
-        <img src="img4.jpg">
-    </div>
-</section>
-
-<!-- LOCATION -->
-<section class="section light hidden">
-    <div>
+<section class="section location">
+    <div style="width:100%; max-width:600px;">
         <h2>Location</h2>
         <div class="divider"></div>
+
         <iframe 
             src="https://www.google.com/maps?q=St+Sylvester+Church+Negombo&output=embed"
             width="100%" height="300">
         </iframe>
-    </div>
-</section>
 
-<!-- RSVP -->
-<section class="section dark hidden">
-    <div>
-        <h2>RSVP</h2>
-        <div class="divider"></div>
-        <p>Kindly confirm your presence</p>
-        <a href="https://wa.me/947XXXXXXXX" style="color:#c2a15f;">Send via WhatsApp</a>
+        <p style="margin-top:15px;">
+            <a href="https://maps.app.goo.gl/X3GXXFcj5q9gLPss8" target="_blank">
+                View on Google Maps
+            </a>
+        </p>
+
+        <p style="margin-top:20px;">
+            We look forward to your prayers and presence
+        </p>
     </div>
 </section>
 
 <script>
+const cover = document.getElementById('cover');
+const music = document.getElementById('bgMusic');
 
-// COUNTDOWN
-const countdown = document.getElementById("countdown");
-const weddingDate = new Date("May 16, 2026 09:30:00").getTime();
+cover.addEventListener('click', () => {
+    cover.classList.add('fade-out');
 
-setInterval(() => {
-    const now = new Date().getTime();
-    const gap = weddingDate - now;
+    setTimeout(() => {
+        cover.style.display = 'none';
+        music.play().catch(() => {});
+    }, 1200);
+});
 
-    const days = Math.floor(gap / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((gap / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((gap / (1000 * 60)) % 60);
-
-    countdown.innerHTML = days + " Days " + hours + " Hrs " + minutes + " Min";
-}, 1000);
-
-// SCROLL ANIMATION
+/* SCROLL ANIMATION */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting){
@@ -206,8 +228,10 @@ const observer = new IntersectionObserver(entries => {
     });
 });
 
-document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
-
+document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.add('hidden');
+    observer.observe(sec);
+});
 </script>
 
 </body>
