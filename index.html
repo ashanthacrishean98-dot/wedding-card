@@ -3,224 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Invitation</title>
+<title>Crishean & Dinithi</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300&display=swap" rel="stylesheet">
 
 <style>
-    body {
-        margin: 0;
-        font-family: "Georgia", serif;
-        background: #f7f4ef;
-        color: #333;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
+body {
+    margin:0;
+    font-family:'Montserrat', sans-serif;
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+}
 
-    /* COVER SCREEN */
-    .cover {
-        position: fixed;
-        inset: 0;
-        background: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        z-index: 10;
-    }
+h1,h2 {
+    font-family:'Playfair Display', serif;
+}
 
-    .cover img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.section {
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+}
 
-    .cover-text {
-        position: absolute;
-        bottom: 40px;
-        color: #fff;
-        font-size: 16px;
-        letter-spacing: 1px;
-        background: rgba(0, 0, 0, 0.4);
-        padding: 12px 24px;
-    }
+.hero {
+    background:url('cover.jpg') center/cover no-repeat;
+}
 
-    .cover.fade-out {
-        opacity: 0;
-        transition: opacity 1.5s ease;
-        pointer-events: none;
-    }
+.overlay {
+    background:rgba(0,0,0,0.6);
+    position:absolute;
+    inset:0;
+}
 
-    /* CARD */
-    .card {
-        display: none;
-        max-width: 600px;
-        background: #ffffff;
-        padding: 40px 30px;
-        text-align: center;
-        border: 1px solid #e0d8c8;
-        box-shadow: 0 0 50px rgba(194, 161, 95, 0.2);
-        opacity: 0;
-        animation: fadeIn 3s forwards;
-    }
+.hero-content {
+    position:relative;
+    z-index:2;
+}
 
-    @keyframes fadeIn {
-        0% { opacity: 0; transform: scale(0.9); }
-        100% { opacity: 1; transform: scale(1); }
-    }
+.names {
+    font-size:42px;
+    letter-spacing:2px;
+}
 
-    .fade-section {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: sectionFade 2s forwards;
-    }
+.section.light {
+    background:#f7f4ef;
+    color:#333;
+}
 
-    @keyframes sectionFade {
-        to { opacity: 1; transform: translateY(0); }
-    }
+.section.dark {
+    background:#000;
+}
 
-    .divider {
-        width: 60px;
-        height: 2px;
-        background: #c2a15f;
-        margin: 20px auto;
-        opacity: 0;
-        animation: dividerFade 2s forwards;
-    }
+.divider {
+    width:60px;
+    height:2px;
+    background:#c2a15f;
+    margin:20px auto;
+}
 
-    @keyframes dividerFade {
-        to { opacity: 1; }
-    }
+.gallery {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
 
-    h2 {
-        font-size: 20px;
-        font-weight: normal;
-        margin: 20px 0 10px;
-    }
+.gallery img {
+    width:100%;
+    border-radius:10px;
+}
 
-    p {
-        font-size: 16px;
-        line-height: 1.6;
-        margin: 10px 0;
-    }
+.countdown {
+    font-size:24px;
+    letter-spacing:1px;
+}
 
-    .names {
-        font-size: 28px;
-        margin: 20px 0;
-    }
+iframe {
+    border:0;
+    border-radius:10px;
+}
 
-    .date {
-        font-size: 18px;
-        letter-spacing: 1px;
-        margin: 20px 0;
-    }
+.hidden {
+    opacity:0;
+    transform:translateY(40px);
+    transition:1.2s ease;
+}
 
-    .footer {
-        margin-top: 30px;
-        font-size: 14px;
-        color: #666;
-    }
+.show {
+    opacity:1;
+    transform:translateY(0);
+}
 
-    a {
-        color: #333;
-        text-decoration: none;
-        border-bottom: 1px solid #c2a15f;
-    }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND MUSIC -->
-<audio id="bgMusic" loop>
-    <source src="wedding-music.mpeg" type="audio/mpeg">
-</audio>
-
-<!-- COVER SCREEN -->
-<div class="cover" id="cover">
-    <img src="Custom Card.jpg" alt="Wedding Cover">
-    <div class="cover-text">Tap to Open Invitation</div>
-</div>
-
-<!-- INVITATION CARD -->
-<div class="card" id="invitationCard">
-
-    <p class="fade-section" style="animation-delay: 0.5s;">
-        With the blessings of our parents
-    </p>
-
-    <div class="divider" style="animation-delay: 1s;"></div>
-
-    <div class="names fade-section" style="animation-delay: 1.5s;">
-        Crishean <br>&amp;<br> Dinithi
+<!-- HERO -->
+<section class="section hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <p>Selected by God</p>
+        <div class="names">Crishean & Dinithi</div>
+        <p>16 May 2026</p>
     </div>
+</section>
 
-    <p class="fade-section" style="animation-delay: 2s;">
-        joyfully invite you to celebrate the sacrament of our marriage
-    </p>
-
-    <div class="divider" style="animation-delay: 2.5s;"></div>
-
-    <div class="date fade-section" style="animation-delay: 3s;">
-        Saturday, 16th May 2026 <br>
-        at 9.30 in the morning
+<!-- STORY -->
+<section class="section light hidden">
+    <div>
+        <h2>Our Story</h2>
+        <div class="divider"></div>
+        <p>
+            In a world of countless souls, God chose us,
+            and in that choice, our story quietly began.
+        </p>
     </div>
+</section>
 
-    <h2 class="fade-section" style="animation-delay: 3.5s;">
-        The Holy Eucharist
-    </h2>
-
-    <p class="fade-section" style="animation-delay: 4s;">
-        St. Sylvester church, Ettukala <br>
-        Negombo
-    </p>
-
-    <h2 class="fade-section" style="animation-delay: 4.5s;">
-        Reception
-    </h2>
-
-    <p class="fade-section" style="animation-delay: 5s;">
-        Immediately following the ceremony <br>
-        at The Grand Ballroom <br>
-        Colombo
-    </p>
-
-    <div class="divider" style="animation-delay: 5.5s;"></div>
-
-    <p class="fade-section" style="animation-delay: 6s;">
-        <a href="https://maps.app.goo.gl/X3GXXFcj5q9gLPss8" target="_blank">
-            View Location on Google Maps
-        </a>
-    </p>
-
-    <div class="footer fade-section" style="animation-delay: 6.5s;">
-        We look forward to your prayers and presence
+<!-- COUNTDOWN -->
+<section class="section dark hidden">
+    <div>
+        <h2>Counting the Days</h2>
+        <div class="divider"></div>
+        <div class="countdown" id="countdown"></div>
     </div>
+</section>
 
-</div>
+<!-- DETAILS -->
+<section class="section light hidden">
+    <div>
+        <h2>The Holy Eucharist</h2>
+        <p>9.30 in the morning</p>
+        <p>St. Sylvester Church, Negombo</p>
+
+        <div class="divider"></div>
+
+        <h2>Reception</h2>
+        <p>Immediately following</p>
+        <p>The Grand Ballroom, Colombo</p>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section dark hidden">
+    <div class="gallery">
+        <img src="img1.jpg">
+        <img src="img2.jpg">
+        <img src="img3.jpg">
+        <img src="img4.jpg">
+    </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section light hidden">
+    <div>
+        <h2>Location</h2>
+        <div class="divider"></div>
+        <iframe 
+            src="https://www.google.com/maps?q=St+Sylvester+Church+Negombo&output=embed"
+            width="100%" height="300">
+        </iframe>
+    </div>
+</section>
+
+<!-- RSVP -->
+<section class="section dark hidden">
+    <div>
+        <h2>RSVP</h2>
+        <div class="divider"></div>
+        <p>Kindly confirm your presence</p>
+        <a href="https://wa.me/947XXXXXXXX" style="color:#c2a15f;">Send via WhatsApp</a>
+    </div>
+</section>
 
 <script>
-    const cover = document.getElementById('cover');
-    const card = document.getElementById('invitationCard');
-    const music = document.getElementById('bgMusic');
 
-    cover.addEventListener('click', () => {
+// COUNTDOWN
+const countdown = document.getElementById("countdown");
+const weddingDate = new Date("May 16, 2026 09:30:00").getTime();
 
-        cover.classList.add('fade-out');
+setInterval(() => {
+    const now = new Date().getTime();
+    const gap = weddingDate - now;
 
-        setTimeout(() => {
-            cover.style.display = 'none';
-            card.style.display = 'block';
+    const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((gap / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((gap / (1000 * 60)) % 60);
 
-            music.play().catch(() => {});
+    countdown.innerHTML = days + " Days " + hours + " Hrs " + minutes + " Min";
+}, 1000);
 
-            document.querySelectorAll('.fade-section').forEach(el => {
-                const delay = el.style.animationDelay;
-                el.style.animation = `sectionFade 2s forwards ${delay}`;
-            });
-
-        }, 1200);
+// SCROLL ANIMATION
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
     });
+});
+
+document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+
 </script>
 
 </body>
