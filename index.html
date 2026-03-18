@@ -222,10 +222,11 @@ a {
     border-left: none;
     border-top: none;
 }
-/* ROUND DATE FRAME */
-.date-circle {
-    width: 220px;
-    height: 220px;
+    
+/* ROUND FLORAL DATE FRAME */
+.date-frame {
+    width: 260px;
+    height: 260px;
     margin: 30px auto;
     border-radius: 50%;
     display: flex;
@@ -233,51 +234,40 @@ a {
     align-items: center;
     text-align: center;
 
+    border: 3px solid #c2a15f;
+    position: relative;
     background: rgba(255,255,255,0.8);
 
-    /* Floral style border */
-    border: 3px solid #c2a15f;
-
-    position: relative;
+    animation: fadeInScale 2s ease forwards;
 }
 
-/* Floral border effect */
-.date-circle::before {
+/* Floral decorative border effect */
+.date-frame::before {
     content: "";
     position: absolute;
     inset: -12px;
     border-radius: 50%;
-    border: 2px dashed #c2a15f;
-    opacity: 0.6;
+    border: 2px solid #c2a15f;
+    background: url('https://www.transparenttextures.com/patterns/flowers.png');
+    opacity: 0.15;
+    z-index: -1;
 }
 
-/* Date Text */
-.date-big {
+.date-text {
     font-family: "Playfair Display", serif;
-    font-size: 42px;
-    color: #c2a15f;
-    margin: 0;
-}
-
-.date-month {
     font-size: 18px;
-    margin: 5px 0;
+    color: #c2a15f;
+    line-height: 1.8;
 }
 
-.date-time {
-    font-size: 16px;
-    margin: 0;
-}
-
-/* Mobile Adjust */
-@media (max-width: 600px) {
-    .date-circle {
-        width: 180px;
-        height: 180px;
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
     }
-
-    .date-big {
-        font-size: 34px;
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 </style>
