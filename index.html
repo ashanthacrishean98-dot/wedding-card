@@ -13,9 +13,12 @@ body {
     font-family: "Libre Baskerville", serif;
     color: #333;
 
-    /* Elegant wedding background */
-    background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
-                url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    /* GOLD GLOW BACKGROUND */
+    background:
+        radial-gradient(circle at top, rgba(194,161,95,0.15), transparent 60%),
+        radial-gradient(circle at bottom, rgba(194,161,95,0.12), transparent 60%),
+        linear-gradient(rgba(255,255,255,0.94), rgba(255,255,255,0.94)),
+        url('https://www.transparenttextures.com/patterns/cream-paper.png');
 }
 
 /* COVER */
@@ -48,20 +51,43 @@ body {
     border-radius: 25px;
 }
 
-/* MAIN CONTENT */
+/* MAIN CARD */
 .container {
     max-width: 600px;
     margin: auto;
     padding: 40px 20px;
     text-align: center;
+
+    box-shadow:
+        0 0 30px rgba(194,161,95,0.15),
+        0 0 60px rgba(194,161,95,0.08);
+
+    border-radius: 10px;
 }
 
-/* TEXT STYLES */
+/* GOLD GLOW ANIMATION */
+@keyframes goldGlow {
+    0% {
+        text-shadow: 0 0 5px rgba(194,161,95,0.5);
+    }
+    50% {
+        text-shadow:
+            0 0 10px rgba(194,161,95,0.8),
+            0 0 20px rgba(194,161,95,0.6);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(194,161,95,0.5);
+    }
+}
+
+/* TEXT */
 .names {
     font-family: "Playfair Display", serif;
     font-size: 30px;
     color: #c2a15f;
     margin: 20px 0;
+
+    animation: goldGlow 3s infinite ease-in-out;
 }
 
 h2 {
@@ -70,6 +96,10 @@ h2 {
     font-weight: 500;
     margin-top: 30px;
     margin-bottom: 10px;
+
+    text-shadow:
+        0 0 4px rgba(194,161,95,0.5),
+        0 0 10px rgba(194,161,95,0.3);
 }
 
 p {
@@ -84,6 +114,10 @@ p {
     height: 2px;
     background: #c2a15f;
     margin: 20px auto;
+
+    box-shadow:
+        0 0 8px rgba(194,161,95,0.7),
+        0 0 15px rgba(194,161,95,0.5);
 }
 
 /* MAP */
@@ -118,9 +152,13 @@ a {
     .container {
         padding: 30px 15px;
     }
+
+    iframe {
+        height: 220px;
+    }
 }
 
-/* ANIMATION */
+/* FADE ANIMATION */
 .fade {
     opacity: 0;
     transform: translateY(20px);
