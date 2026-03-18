@@ -190,36 +190,51 @@ a {
     p { font-size: 14px; }
     .container { padding: 30px 15px; }
 }
+    function startAnimations() {
+    const elements = document.querySelectorAll('.fade-line, .slide-left, .slide-right, .gold-frame');
+
+    elements.forEach((el, index) => {
+        setTimeout(() => {
+            el.classList.add('show');
+        }, index * 400);
+    });
+}
 .gold-frame {
     border: 2px solid #c2a15f;
-    padding: 25px 20px;
-    margin: 20px 0;
+    padding: 30px 25px;
+    margin: 40px auto;
+    max-width: 520px;
     position: relative;
-    background: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.85);
+
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.8s ease;
 }
 
-/* Elegant corner detail */
-.gold-frame::before,
+/* Soft floral background inside frame */
+.gold-frame::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    background: url('https://www.transparenttextures.com/patterns/flowers.png');
+    opacity: 0.08;
+    z-index: 0;
+}
+
+/* Decorative corners */
 .gold-frame::after {
     content: "";
     position: absolute;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #c2a15f;
+    inset: -8px;
+    border: 1px solid #c2a15f;
+    z-index: -1;
 }
 
-.gold-frame::before {
-    top: -10px;
-    left: -10px;
-    border-right: none;
-    border-bottom: none;
+.gold-frame.show {
+    opacity: 1;
+    transform: translateY(0);
 }
-
-.gold-frame::after {
-    bottom: -10px;
-    right: -10px;
-    border-left: none;
-    border-top: none;
 }
 /* ROUND DATE FRAME */
 .date-circle {
@@ -312,15 +327,16 @@ a {
     <p class="fade-line">to celebrate the sacrament of our marriage</p>
 
     <div class="divider fade-line"></div>
-<div class="gold-frame">
-    <h2 class="fade-line">Our Story</h2>
-    <p class="fade-line">God did not simply bring us together.</p>
-    <p class="fade-line">He aligned our seasons,</p>
-    <p class="fade-line">mended our waiting,</p>
-    <p class="fade-line">In His timing,</p>
-    <p class="fade-line">our story became His testimony,</p>
-    <p class="fade-line">and our union became His blessing.</p>
-</div>
+    
+        <div class="gold-frame">
+            <h2 class="fade-line">Our Story</h2>
+            <p class="fade-line">God did not simply bring us together.</p>
+            <p class="fade-line">He aligned our seasons,</p>
+            <p class="fade-line">mended our waiting,</p>
+            <p class="fade-line">In His timing,</p>
+            <p class="fade-line">our story became His testimony,</p>
+            <p class="fade-line">and our union became His blessing.</p>
+        </div>
     
     <div class="divider fade-line"></div>
 
@@ -328,7 +344,7 @@ a {
     
     <div class="date-circle fade-line">
         <div>
-            <p class="date-big">16</p>
+            <p class="date-big"><b>16</b></p>
             <p class="date-month">May 2026</p>
             <p class="date-time">9.30 AM</p>
         </div>
