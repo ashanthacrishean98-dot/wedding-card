@@ -14,13 +14,12 @@ body {
     color: #333;
     overflow-x: hidden;
 
-    /* Slow parallax background */
-    background: 
-        linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.93)),
-        url('https://images.unsplash.com/photo-1490750967868-88aa4486c946');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
+    /* SMALL FLORAL BACKGROUND */
+    background:
+        linear-gradient(rgba(255,255,255,0.96), rgba(255,255,255,0.96)),
+        url('https://www.transparenttextures.com/patterns/flowers.png');
+    background-repeat: repeat;
+    background-size: 300px;
 }
 
 /* COVER */
@@ -33,6 +32,7 @@ body {
     align-items: center;
     cursor: pointer;
     z-index: 20;
+    transition: opacity 1.8s ease;
 }
 
 .cover img {
@@ -55,80 +55,60 @@ body {
 
 .cover.fade-out {
     opacity: 0;
-    transition: 1.5s ease;
     pointer-events: none;
-}
-
-/* FLOATING FLORAL OVERLAY */
-.floral-overlay {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background: url('https://www.transparenttextures.com/patterns/flowers.png');
-    opacity: 0.08;
-    z-index: 1;
 }
 
 /* CONTAINER */
 .container {
     position: relative;
-    z-index: 2;
     max-width: 600px;
     margin: auto;
-    padding: 40px 20px;
+    padding: 50px 20px;
     text-align: center;
+    animation: slowFade 3s ease;
 }
 
-/* TEXT */
+@keyframes slowFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* NAMES */
 .names {
     font-family: "Playfair Display", serif;
-    font-size: 30px;
+    font-size: 32px;
     color: #c2a15f;
-    margin: 20px 0;
-}
-
-h2 {
-    font-family: "Playfair Display", serif;
-    color: #c2a15f;
-    font-weight: 500;
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 15px;
-    line-height: 1.7;
-    margin: 10px 0;
+    margin: 25px 0;
 }
 
 /* DIVIDER */
 .divider {
-    width: 50px;
+    width: 60px;
     height: 2px;
     background: #c2a15f;
-    margin: 20px auto;
+    margin: 25px auto;
 }
 
-/* MAP */
-iframe {
-    width: 100%;
-    height: 260px;
-    margin-top: 15px;
-    border: 0;
-}
-
-/* LINKS */
-a {
+/* HEADINGS */
+h2 {
+    font-family: "Playfair Display", serif;
     color: #c2a15f;
-    text-decoration: none;
-    border-bottom: 1px solid #c2a15f;
+    font-weight: 500;
+    margin-top: 35px;
 }
 
-/* LINE ANIMATION */
+/* TEXT */
+p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 12px 0;
+}
+
+/* SLIDE ANIMATION (SLOW) */
 .fade-line {
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 1s ease;
+    transform: translateY(25px);
+    transition: all 2s ease;
 }
 
 .fade-line.show {
@@ -136,72 +116,39 @@ a {
     transform: translateY(0);
 }
 
-/* SIDE NAME ANIMATION */
+/* NAME FROM LEFT */
 .slide-left {
     opacity: 0;
-    transform: translateX(-60px);
-    transition: all 1.2s ease;
+    transform: translateX(-120px);
+    transition: all 2.2s ease;
 }
 
+.slide-left.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* NAME FROM RIGHT */
 .slide-right {
     opacity: 0;
-    transform: translateX(60px);
-    transition: all 1.2s ease;
+    transform: translateX(120px);
+    transition: all 2.2s ease;
 }
 
-.slide-left.show,
 .slide-right.show {
     opacity: 1;
     transform: translateX(0);
 }
 
-/* CINEMATIC FADE */
-.container {
-    animation: cinematicFade 2s ease;
-}
-
-@keyframes cinematicFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* GOLDEN SPARKLES */
-.sparkle {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    background: gold;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: sparkleAnim 4s linear infinite;
-    opacity: 0;
-    z-index: 3;
-}
-
-@keyframes sparkleAnim {
-    0% { transform: translateY(0) scale(0); opacity: 0; }
-    50% { opacity: 0.8; }
-    100% { transform: translateY(-100vh) scale(1); opacity: 0; }
-}
-
 /* MOBILE */
 @media (max-width: 600px) {
-    .names { font-size: 24px; }
+    .names { font-size: 26px; }
     p { font-size: 14px; }
-    .container { padding: 30px 15px; }
 }
 </style>
 </head>
 
 <body>
-
-<!-- MUSIC -->
-<audio id="bgMusic" loop>
-    <source src="wedding-music.mpeg" type="audio/mpeg">
-</audio>
-
-<!-- FLOATING FLORAL OVERLAY -->
-<div class="floral-overlay"></div>
 
 <!-- COVER -->
 <div class="cover" id="cover">
@@ -212,88 +159,56 @@ a {
 <!-- CONTENT -->
 <div class="container">
 
-    <p class="slide-left">With the blessings of our parents</p>
+    <p class="fade-line">With the blessings of our parents</p>
     <div class="divider fade-line"></div>
 
-    <div class="names slide-right">
-        Crishean <br>&amp;<br> Dinithi
-    </div>
+    <!-- NAME LEFT & RIGHT -->
+    <div class="names slide-left">Crisean</div>
+    <div class="names slide-right">&amp;</div>
+    <div class="names slide-left">Dinithi</div>
 
-    <p class="fade-line">joyfully invite you</p>
+    <p class="fade-line">Joyfully invite you</p>
     <p class="fade-line">to celebrate the sacrament of our marriage</p>
 
     <div class="divider fade-line"></div>
 
     <h2 class="fade-line">Our Story</h2>
-    <p class="fade-line">In a world of countless souls,</p>
-    <p class="fade-line">God chose us,</p>
-    <p class="fade-line">and in that choice, our story began.</p>
+    <p class="fade-line">
+        In a world of countless souls,<br>
+        God chose us,<br>
+        and in that choice, our story began.
+    </p>
 
     <div class="divider fade-line"></div>
 
     <h2 class="fade-line">Wedding Day</h2>
     <p class="fade-line">
-        Saturday, 16th May 2026 <br>
+        Saturday, 16th May 2026<br>
         at 9.30 in the morning
     </p>
-
-    <h2 class="fade-line">The Holy Eucharist</h2>
-    <p class="fade-line">
-        St. Sylvester Church, Ettukala <br>
-        Negombo
-    </p>
-
-    <h2 class="fade-line">Reception</h2>
-    <p class="fade-line">
-        The Grand Ballroom <br>
-        Colombo
-    </p>
-
-    <div class="divider fade-line"></div>
-
-    <h2 class="fade-line">Location</h2>
-
-    <iframe
-        src="https://www.google.com/maps?q=St+Sylvester+Church+Negombo&output=embed">
-    </iframe>
 
 </div>
 
 <script>
 const cover = document.getElementById('cover');
-const music = document.getElementById('bgMusic');
 
 cover.addEventListener('click', () => {
     cover.classList.add('fade-out');
 
     setTimeout(() => {
         cover.style.display = "none";
-        music.play().catch(() => {});
         startAnimations();
-        createSparkles();
-    }, 1200);
+    }, 1800);
 });
 
-/* LINE + SIDE ANIMATION */
+/* SLOW ANIMATION SEQUENCE */
 function startAnimations() {
     const elements = document.querySelectorAll('.fade-line, .slide-left, .slide-right');
     elements.forEach((el, index) => {
         setTimeout(() => {
             el.classList.add('show');
-        }, index * 250);
+        }, index * 600); // slower timing
     });
-}
-
-/* GOLD SPARKLES */
-function createSparkles() {
-    for (let i = 0; i < 25; i++) {
-        let sparkle = document.createElement("div");
-        sparkle.classList.add("sparkle");
-        sparkle.style.left = Math.random() * 100 + "vw";
-        sparkle.style.top = Math.random() * 100 + "vh";
-        sparkle.style.animationDuration = (3 + Math.random() * 3) + "s";
-        document.body.appendChild(sparkle);
-    }
 }
 </script>
 
