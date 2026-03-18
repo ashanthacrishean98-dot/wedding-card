@@ -222,6 +222,17 @@ a {
     <p class="fade-line">joyfully invite you</p>
     <p class="fade-line">to celebrate the sacrament of our marriage</p>
 
+.gold-frame {
+    border: 2px solid #c2a15f;
+    padding: 25px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.gold-frame::before,
+.gold-frame::after {
+    content: "
     <div class="divider fade-line"></div>
 
     <h2 class="fade-line">Our Story</h2>
@@ -232,7 +243,30 @@ a {
     <p class="fade-line">our story became His testimony,</p>
     <p class="fade-line">and our union became His blessing.</p>
 
-    <div class="divider fade-line"></div>
+    <div class="divider fade-line"></div>";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #c2a15f;
+}
+
+.gold-frame::before {
+    top: -10px;
+    left: -10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.gold-frame::after {
+    bottom: -10px;
+    right: -10px;
+    border-left: none;
+    border-top: none;
+}
+
+.gold-frame p {
+    margin: 12px 0;
+}
 
     <h2 class="fade-line">Wedding Day</h2>
     <p class="fade-line">
