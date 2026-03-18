@@ -221,6 +221,64 @@ a {
     border-left: none;
     border-top: none;
 }
+/* ROUND DATE FRAME */
+.date-circle {
+    width: 220px;
+    height: 220px;
+    margin: 30px auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background: rgba(255,255,255,0.8);
+
+    /* Floral style border */
+    border: 3px solid #c2a15f;
+
+    position: relative;
+}
+
+/* Floral border effect */
+.date-circle::before {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    border: 2px dashed #c2a15f;
+    opacity: 0.6;
+}
+
+/* Date Text */
+.date-big {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    color: #c2a15f;
+    margin: 0;
+}
+
+.date-month {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.date-time {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Mobile Adjust */
+@media (max-width: 600px) {
+    .date-circle {
+        width: 180px;
+        height: 180px;
+    }
+
+    .date-big {
+        font-size: 34px;
+    }
+}
 </style>
 </head>
 
@@ -267,10 +325,14 @@ a {
     <div class="divider fade-line"></div>
 
     <h2 class="fade-line">Wedding Day</h2>
-    <p class="fade-line">
-        Saturday, 16th May 2026 <br>
-        at 9.30 in the morning
-    </p>
+    
+    <div class="date-circle fade-line">
+        <div>
+            <p class="date-big">16</p>
+            <p class="date-month">May 2026</p>
+            <p class="date-time">9.30 AM</p>
+        </div>
+    </div>
 
     <h2 class="fade-line">The Holy Eucharist</h2>
     <p class="fade-line">
