@@ -190,6 +190,37 @@ a {
     p { font-size: 14px; }
     .container { padding: 30px 15px; }
 }
+.gold-frame {
+    border: 2px solid #c2a15f;
+    padding: 25px 20px;
+    margin: 20px 0;
+    position: relative;
+    background: rgba(255,255,255,0.7);
+}
+
+/* Elegant corner detail */
+.gold-frame::before,
+.gold-frame::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #c2a15f;
+}
+
+.gold-frame::before {
+    top: -10px;
+    left: -10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.gold-frame::after {
+    bottom: -10px;
+    right: -10px;
+    border-left: none;
+    border-top: none;
+}
 </style>
 </head>
 
@@ -223,7 +254,7 @@ a {
     <p class="fade-line">to celebrate the sacrament of our marriage</p>
 
     <div class="divider fade-line"></div>
-
+<div class="gold-frame">
     <h2 class="fade-line">Our Story</h2>
     <p class="fade-line">God did not simply bring us together.</p>
     <p class="fade-line">He aligned our seasons,</p>
@@ -231,7 +262,8 @@ a {
     <p class="fade-line">In His timing,</p>
     <p class="fade-line">our story became His testimony,</p>
     <p class="fade-line">and our union became His blessing.</p>
-
+</div>
+    
     <div class="divider fade-line"></div>
 
     <h2 class="fade-line">Wedding Day</h2>
