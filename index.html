@@ -12,10 +12,15 @@ body {
     margin: 0;
     font-family: "Libre Baskerville", serif;
     color: #333;
+    overflow-x: hidden;
 
-    /* Elegant wedding background */
-    background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
-                url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    /* Slow parallax background */
+    background: 
+        linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.93)),
+        url('https://images.unsplash.com/photo-1490750967868-88aa4486c946');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 /* COVER */
@@ -27,7 +32,7 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 10;
+    z-index: 20;
 }
 
 .cover img {
@@ -48,15 +53,33 @@ body {
     border-radius: 25px;
 }
 
-/* MAIN CONTENT */
+.cover.fade-out {
+    opacity: 0;
+    transition: 1.5s ease;
+    pointer-events: none;
+}
+
+/* FLOATING FLORAL OVERLAY */
+.floral-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: url('https://www.transparenttextures.com/patterns/flowers.png');
+    opacity: 0.08;
+    z-index: 1;
+}
+
+/* CONTAINER */
 .container {
+    position: relative;
+    z-index: 2;
     max-width: 600px;
     margin: auto;
     padding: 40px 20px;
     text-align: center;
 }
 
-/* TEXT STYLES */
+/* TEXT */
 .names {
     font-family: "Playfair Display", serif;
     font-size: 30px;
@@ -94,42 +117,78 @@ iframe {
     border: 0;
 }
 
-/* LINK */
+/* LINKS */
 a {
     color: #c2a15f;
     text-decoration: none;
     border-bottom: 1px solid #c2a15f;
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-    .names {
-        font-size: 24px;
-    }
-
-    h2 {
-        font-size: 18px;
-    }
-
-    p {
-        font-size: 14px;
-    }
-
-    .container {
-        padding: 30px 15px;
-    }
-}
-
-/* ANIMATION */
-.fade {
+/* LINE ANIMATION */
+.fade-line {
     opacity: 0;
     transform: translateY(20px);
     transition: all 1s ease;
 }
 
-.show {
+.fade-line.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* SIDE NAME ANIMATION */
+.slide-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: all 1.2s ease;
+}
+
+.slide-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: all 1.2s ease;
+}
+
+.slide-left.show,
+.slide-right.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* CINEMATIC FADE */
+.container {
+    animation: cinematicFade 2s ease;
+}
+
+@keyframes cinematicFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* GOLDEN SPARKLES */
+.sparkle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: gold;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sparkleAnim 4s linear infinite;
+    opacity: 0;
+    z-index: 3;
+}
+
+@keyframes sparkleAnim {
+    0% { transform: translateY(0) scale(0); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .names { font-size: 24px; }
+    p { font-size: 14px; }
+    .container { padding: 30px 15px; }
 }
 </style>
 </head>
@@ -141,73 +200,62 @@ a {
     <source src="wedding-music.mpeg" type="audio/mpeg">
 </audio>
 
+<!-- FLOATING FLORAL OVERLAY -->
+<div class="floral-overlay"></div>
+
 <!-- COVER -->
 <div class="cover" id="cover">
-    <img src="Custom Card.jpg" alt="Wedding Cover">
+    <img src="Custom Card.jpg">
     <div class="cover-text">Tap to Open Invitation</div>
 </div>
 
 <!-- CONTENT -->
 <div class="container">
 
-    <p class="fade">With the blessings of our parents</p>
+    <p class="slide-left">With the blessings of our parents</p>
+    <div class="divider fade-line"></div>
 
-    <div class="divider fade"></div>
-
-    <div class="names fade">
+    <div class="names slide-right">
         Crishean <br>&amp;<br> Dinithi
     </div>
 
-    <p class="fade">
-        joyfully invite you to celebrate our marriage
-    </p>
+    <p class="fade-line">joyfully invite you</p>
+    <p class="fade-line">to celebrate the sacrament of our marriage</p>
 
-    <div class="divider fade"></div>
+    <div class="divider fade-line"></div>
 
-    <h2 class="fade">Our Story</h2>
-    <p class="fade">
-        In a world of countless souls, God chose us, 
-        and in that choice, our story quietly began.
-    </p>
+    <h2 class="fade-line">Our Story</h2>
+    <p class="fade-line">In a world of countless souls,</p>
+    <p class="fade-line">God chose us,</p>
+    <p class="fade-line">and in that choice, our story began.</p>
 
-    <div class="divider fade"></div>
+    <div class="divider fade-line"></div>
 
-    <h2 class="fade">Wedding Day</h2>
-    <p class="fade">
+    <h2 class="fade-line">Wedding Day</h2>
+    <p class="fade-line">
         Saturday, 16th May 2026 <br>
         at 9.30 in the morning
     </p>
 
-    <h2 class="fade">The Holy Eucharist</h2>
-    <p class="fade">
+    <h2 class="fade-line">The Holy Eucharist</h2>
+    <p class="fade-line">
         St. Sylvester Church, Ettukala <br>
         Negombo
     </p>
 
-    <h2 class="fade">Reception</h2>
-    <p class="fade">
-        Immediately following the ceremony <br>
+    <h2 class="fade-line">Reception</h2>
+    <p class="fade-line">
         The Grand Ballroom <br>
         Colombo
     </p>
 
-    <div class="divider fade"></div>
+    <div class="divider fade-line"></div>
 
-    <h2 class="fade">Location</h2>
+    <h2 class="fade-line">Location</h2>
 
-    <iframe 
+    <iframe
         src="https://www.google.com/maps?q=St+Sylvester+Church+Negombo&output=embed">
     </iframe>
-
-    <p class="fade">
-        <a href="https://maps.app.goo.gl/X3GXXFcj5q9gLPss8" target="_blank">
-            View on Google Maps
-        </a>
-    </p>
-
-    <p class="fade" style="margin-top:20px;">
-        We look forward to your prayers and presence
-    </p>
 
 </div>
 
@@ -216,26 +264,37 @@ const cover = document.getElementById('cover');
 const music = document.getElementById('bgMusic');
 
 cover.addEventListener('click', () => {
-    cover.style.opacity = "0";
+    cover.classList.add('fade-out');
 
     setTimeout(() => {
         cover.style.display = "none";
         music.play().catch(() => {});
+        startAnimations();
+        createSparkles();
     }, 1200);
 });
 
-/* SCROLL FADE */
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
-        }
+/* LINE + SIDE ANIMATION */
+function startAnimations() {
+    const elements = document.querySelectorAll('.fade-line, .slide-left, .slide-right');
+    elements.forEach((el, index) => {
+        setTimeout(() => {
+            el.classList.add('show');
+        }, index * 250);
     });
-});
+}
 
-document.querySelectorAll('.fade').forEach(el => {
-    observer.observe(el);
-});
+/* GOLD SPARKLES */
+function createSparkles() {
+    for (let i = 0; i < 25; i++) {
+        let sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.top = Math.random() * 100 + "vh";
+        sparkle.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(sparkle);
+    }
+}
 </script>
 
 </body>
