@@ -109,44 +109,33 @@ p {
     margin: 20px auto;
 }
 
-/* MAP */
-.map-container {
-    position: relative;
-    margin-top: 20px;
-    overflow: hidden;
+/* SMALL CARD-STYLE MAP */
+.map-box {
+    max-width: 350px;
+    margin: 20px auto;
+    padding: 8px;
+    border: 1px solid #c2a15f;
     border-radius: 12px;
+    background: rgba(255,255,255,0.85);
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
-.map-container iframe {
+.map-box iframe {
     width: 100%;
-    height: 260px;
-    border: 0;
-    display: block;
+    height: 180px;
+    border-radius: 10px;
 }
 
-/* 30% fade from edges */
-.map-container::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+/* MOBILE ADJUST */
+@media (max-width: 600px) {
+    .map-box {
+        max-width: 280px;
+    }
 
-    background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.9) 0%,
-        rgba(255,255,255,0) 60%,
-        rgba(255,255,255,0) 40%,
-        rgba(255,255,255,0.9) 100%
-    ),
-    linear-gradient(
-        to right,
-        rgba(255,255,255,0.9) 0%,
-        rgba(255,255,255,0) 60%,
-        rgba(255,255,255,0) 40%,
-        rgba(255,255,255,0.9) 100%
-    );
-
-    pointer-events: none;
-}
+    .map-box iframe {
+        height: 160px;
+    }
 }
 
 /* LINKS */
@@ -325,6 +314,82 @@ a {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+    
+/* RSVP INTRO BOX */
+.rsvp-intro {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px 20px;
+
+    border-radius: 20px;
+    border: 1.5px solid #c2a15f;
+
+    background: rgba(255,255,255,0.9);
+
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: all 1.5s ease;
+}
+
+.rsvp-intro.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.rsvp-intro h2 {
+    margin-bottom: 10px;
+}
+/* RSVP FORM BOX */
+.rsvp-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 25px 20px;
+
+    border-radius: 20px;
+    border: 1.5px solid #c2a15f;
+
+    background: rgba(255,255,255,0.95);
+
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* INPUTS */
+.rsvp-form label {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+
+    border-radius: 10px;
+    border: 1px solid #ddd;
+
+    font-family: inherit;
+}
+
+/* BUTTON */
+.rsvp-form button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+
+    background: #c2a15f;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+
+    font-size: 14px;
+    cursor: pointer;
+}
 </style>
 </head>
 
@@ -390,7 +455,7 @@ a {
 
     <h2 class="fade-line">Church Location</h2>
 
-    <div class="map-container fade-map">
+    <div class="map-box fade-line">
     <iframe
         src="https://www.google.com/maps?q=St+Sylvester+Church+Negombo&output=embed">
     </iframe>
@@ -406,11 +471,45 @@ a {
 
     <h2 class="fade-line">Reception Location</h2>
     
-    <div class="map-container fade-map">
+ <div class="map-box fade-line">
     <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.1229907472875!2d79.8403536!3d7.2268099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2eeafffc3d2d9%3A0xaf3377a98585696c!2sAuric%20Grand%20Ballroom!5e0!3m2!1sen!2slk!4v1773811331053!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
     </iframe>
-    </div>
+</div>
+
+<div class="rsvp-intro slide-left">
+
+    <h2>❤️ Save the Date! ❤️</h2>
+
+    <p>
+        Your presence will make our wedding day complete.
+        We're so excited to celebrate this special moment with you!
+    </p>
+
+</div>
+    
+<div class="rsvp-form fade-line">
+
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdoTZvSMU6-sV_SGP-yz-PvSaORc-fGW8SPBeChtRhpgSe0MA/viewform?usp=publish-editor" method="POST" target="_blank">
+
+        <label>Name</label>
+        <input type="text" name="name" required>
+
+        <label>Will you attend?</label>
+        <select name="attendance" required>
+            <option value="">Select an option</option>
+            <option>Yes, I'll be there</option>
+            <option>Sorry, I can't make it</option>
+        </select>
+
+        <label>Message</label>
+        <textarea name="message" rows="3"></textarea>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+</div>
     
 </div>
 
