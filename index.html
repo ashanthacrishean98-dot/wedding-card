@@ -490,25 +490,26 @@ a {
     
 <div class="rsvp-form fade-line">
 
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdoTZvSMU6-sV_SGP-yz-PvSaORc-fGW8SPBeChtRhpgSe0MA/" method="POST" target="_blank">
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdoTZvSMU6-sV_SGP-yz-PvSaORc-fGW8SPBeChtRhpgSe0MA/formResponse" method="POST" target="hidden_iframe">
 
         <label>Name</label>
-        <input type="text" name="name" required>
+        <input type="text" name="entry.1988924844" required>
 
         <label>Will you attend?</label>
-        <select name="attendance" required>
+        <select name="entry.1677050777" required>
             <option value="">Select an option</option>
             <option>Yes, I'll be there</option>
             <option>Sorry, I can't make it</option>
         </select>
 
         <label>Message</label>
-        <textarea name="message" rows="3"></textarea>
+        <textarea name="entry.1794814993" rows="3"></textarea>
 
         <button type="submit">Submit</button>
 
     </form>
-
+    
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
 </div>
     
 </div>
