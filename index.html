@@ -772,14 +772,9 @@ function closeSuccess() {
 }
     
 function openInvitation() {
-            document.querySelector('.cover-container').style.opacity = "0";
-            document.querySelector('.cover-container').style.transform = "scale(1.05)";
-
-            setTimeout(() => {
-                document.querySelector('.cover-container').style.display = 'none';
-                document.querySelector('.main-content').style.display = 'block';
-            }, 600);
-} 
+    document.querySelector('.cover-container').style.display = 'none';
+    document.querySelector('.main-content').style.display = 'block';
+}
 </script>
 
 </body>
