@@ -554,7 +554,10 @@ a {
     font-size: 14px;
     cursor: pointer;
 }
-
+/* MAIN CONTENT HIDDEN INITIALLY */
+.main-content {
+    display: none;
+}
 </style>
 </head>
 
@@ -593,6 +596,7 @@ a {
 
 <!-- CONTENT -->
 <div class="main-content">
+    <div class="container">
 
     <p class="slide-left">With the blessings of our parents</p>
     <div class="divider fade-line"></div>
@@ -699,14 +703,14 @@ a {
 </div>
 
 <div id="successBox" class="success-box">
-    <div class="success-content">
-        <h2>Thank You ❤️</h2>
-        <p>Your response has been recorded successfully.</p>
-        <span>We look forward to celebrating with you.</span>
-        <button onclick="closeSuccess()">Close</button>
+        <div class="success-content">
+             <h2>Thank You ❤️</h2>
+            <p>Your response has been recorded successfully.</p>
+            <span>We look forward to celebrating with you.</span>
+            <button onclick="closeSuccess()">Close</button>
+        </div>
     </div>
-</div>
-    
+   </div>   
 </div>
 
 <script>
@@ -767,7 +771,11 @@ function closeSuccess() {
     
 function openInvitation() {
     document.querySelector('.cover-container').style.display = 'none';
-    document.querySelector('.main-content').style.display = 'block';
+
+    const main = document.querySelector('.main-content');
+    main.style.display = 'block';
+    main.style.opacity = '1';
+
     music.play().catch(() => {});
     startAnimations();
     createSparkles();
