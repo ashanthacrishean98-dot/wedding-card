@@ -464,13 +464,17 @@ a {
 }
 /* COVER WRAPPER */
 .cover-container {
-    height: 100vh;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 1.5s ease;
     
     background: url('Custom Card.jpg') center/cover no-repeat;
+
+    transition: opacity 1.5s ease;
 }
 
 /* OVAL FRAME */
@@ -558,6 +562,12 @@ a {
 /* MAIN CONTENT HIDDEN INITIALLY */
 .main-content {
     display: none;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.main-content.show {
+    opacity: 1;
 }
 </style>
 </head>
@@ -715,7 +725,6 @@ a {
 </div>
 
 <script>
-    
 const cover = document.getElementById('cover');
 const music = document.getElementById('bgMusic');
 
@@ -731,10 +740,14 @@ function openInvitation() {
         const main = document.querySelector('.main-content');
         main.style.display = 'block';
 
+        setTimeout(() => {
+            main.classList.add('show');
+        }, 50);
+
         music.play().catch(() => {});
         startAnimations();
         createSparkles();
-    }, 1000);
+    }, 1200);
 }
 
 /* ANIMATIONS */
@@ -763,67 +776,11 @@ function createSparkles() {
 function iframeLoaded() {
     if (!submitted) return;
     submitted = false;
-    showSuccess();
-}
-
-function showSuccess() {
     document.getElementById("successBox").style.display = "flex";
 }
 
 function closeSuccess() {
     document.getElementById("successBox").style.display = "none";
-}
-
-/* LINE + SIDE ANIMATION */
-function startAnimations() {
-    const elements = document.querySelectorAll('.fade-line, .slide-left, .slide-right, .gold-frame, .fade-map');
-    elements.forEach((el, index) => {
-        setTimeout(() => {
-            el.classList.add('show');
-        }, index * 250);
-    });
-}
-
-/* GOLD SPARKLES */
-function createSparkles() {
-    for (let i = 0; i < 25; i++) {
-        let sparkle = document.createElement("div");
-        sparkle.classList.add("sparkle");
-        sparkle.style.left = Math.random() * 100 + "vw";
-        sparkle.style.top = Math.random() * 100 + "vh";
-        sparkle.style.animationDuration = (3 + Math.random() * 3) + "s";
-        document.body.appendChild(sparkle);
-    }
-}
-
-
-let submitted = false;
-
-function iframeLoaded() {
-    if (!submitted) return;
-
-    submitted = false;
-    showSuccess();
-}
-
-function showSuccess() {
-    document.getElementById("successBox").style.display = "flex";
-}
-
-function closeSuccess() {
-    document.getElementById("successBox").style.display = "none";
-}
-    
-function openInvitation() {
-    document.querySelector('.cover-container').style.display = 'none';
-
-    const main = document.querySelector('.main-content');
-    main.style.display = 'block';
-    main.style.opacity = '1';
-
-    music.play().catch(() => {});
-    startAnimations();
-    createSparkles();
 }
 </script>
 
