@@ -563,7 +563,7 @@ a {
 <div class="rsvp-form fade-line">
 
     <form action="https://docs.google.com/forms/d/e/1FAIpQLSdoTZvSMU6-sV_SGP-yz-PvSaORc-fGW8SPBeChtRhpgSe0MA/formResponse"
-    method="POST"
+    method="POST"   
     target="hidden_iframe"
     onsubmit="submitted=true;">
 
@@ -584,7 +584,7 @@ a {
 
     </form>
 
-    <iframe name="hidden_iframe" style="display:none;" onload="if(submitted) showSuccess();"></iframe>
+    <iframe name="hidden_iframe" style="display:none;" onload="iframeLoaded()"></iframe>
     
 </div>
 
@@ -645,7 +645,14 @@ const elements = document.querySelectorAll('.fade-line, .slide-left, .slide-righ
     });
 }
 
-var submitted = false;
+let submitted = false;
+
+function iframeLoaded() {
+    if (!submitted) return;
+
+    submitted = false;
+    showSuccess();
+}
 
 function showSuccess() {
     document.getElementById("successBox").style.display = "flex";
