@@ -572,7 +572,7 @@ a {
 <div class="floral-overlay"></div>
 
 <!-- COVER -->
-<div class="cover-container" onclick="openInvitation()">
+<div class="cover-container" id="cover" onclick="openInvitation()">
 
     <div class="oval-frame">
 
@@ -595,7 +595,7 @@ a {
 </div>
 
 <!-- CONTENT -->
-<div class=".main-content">
+<div class="main-content">
 
     <p class="slide-left">With the blessings of our parents</p>
     <div class="divider fade-line"></div>
@@ -713,7 +713,8 @@ a {
 </div>
 
 <script>
-const cover = document.getElementById('cover');
+    
+<div class="cover-container" id="cover" onclick="openInvitation()">
 const music = document.getElementById('bgMusic');
 
 cover.addEventListener('click', () => {
@@ -748,15 +749,7 @@ function createSparkles() {
         document.body.appendChild(sparkle);
     }
 }
-function startAnimations() {
-const elements = document.querySelectorAll('.fade-line, .slide-left, .slide-right, .gold-frame');
 
-    elements.forEach((el, index) => {
-        setTimeout(() => {
-            el.classList.add('show');
-        }, index * 250);
-    });
-}
 
 let submitted = false;
 
@@ -778,6 +771,9 @@ function closeSuccess() {
 function openInvitation() {
     document.querySelector('.cover-container').style.display = 'none';
     document.querySelector('.main-content').style.display = 'block';
+    music.play().catch(() => {});
+    startAnimations();
+    createSparkles();
 }
 </script>
 
