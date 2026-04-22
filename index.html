@@ -24,33 +24,63 @@ body {
 }
 
 /* COVER */
-.cover {
-    position: fixed;
-    inset: 0;
-    background: #000;
+/* COVER PHOTO STYLE */
+.cover-photo {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    height: 70vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    z-index: 20;
 }
 
-.cover img {
+/* IMAGE */
+.cover-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    border-radius: 20px;
+
+    /* Soft blur edges effect */
+    box-shadow: 
+        0 0 80px rgba(255,255,255,0.9),
+        0 0 120px rgba(255,255,255,0.7);
 }
 
-.cover-text {
+/* DARK OVERLAY FOR DEPTH */
+.cover-photo::after {
+    content: "";
     position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    inset: 0;
+    border-radius: 20px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.4)
+    );
+}
+
+/* SMALL OPEN BUTTON */
+.open-btn {
+    position: absolute;
+    bottom: 20px;
+
+    padding: 8px 16px;
+
+    font-size: 13px;
     color: #fff;
-    font-size: 14px;
+
+    border: 1px solid #fff;
+    border-radius: 20px;
+
     background: rgba(0,0,0,0.4);
-    padding: 10px 20px;
-    border-radius: 25px;
+    cursor: pointer;
+
+    z-index: 2;
 }
 
 .cover.fade-out {
@@ -585,23 +615,15 @@ a {
 <!-- COVER -->
 <div class="cover-container" id="cover" onclick="openInvitation()">
 
-    <div class="oval-frame">
+<div class="cover-photo">
 
-        <img src="Custom Card.jpg" alt="Cover Photo">
+    <img src="Custom Card.jpg" alt="Cover Photo">
 
-        <div class="gold-ring ring1"></div>
-        <div class="gold-ring ring2"></div>
-        <div class="gold-ring ring3"></div>
-
-        <div class="cover-text">
-            <h1>The wedding of<br>Dinithi & Crishean</h1>
-        </div>
-
-        <div class="view-btn">
-            View Invitation
-        </div>
-
+    <div class="open-btn" onclick="openInvitation(event)">
+        Tap to Open
     </div>
+
+</div>
 
 </div>
 
