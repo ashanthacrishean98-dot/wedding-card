@@ -860,7 +860,9 @@ function openInvitation() {
 
 /* ANIMATIONS */
 function startAnimations() {
-    const elements = document.querySelectorAll('.fade-line, .slide-left, .slide-right, .gold-frame');
+   const elements = document.querySelectorAll(
+'.fade-line, .slide-left, .slide-right, .gold-frame, .gallery-item'
+);
     elements.forEach((el, index) => {
         setTimeout(() => {
             el.classList.add('show');
