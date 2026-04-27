@@ -8,72 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 <style>
-body{
-    margin:0;
-    font-family:"Libre Baskerville", serif;
-    color:#333;
-    overflow-x:hidden;
-}
+body {
+    margin: 0;
+    font-family: "Libre Baskerville", serif;
+    color: #333;
+    overflow-x: hidden;
 
-/* FULLSCREEN BACKGROUND SLIDES */
-.bg-slider{
-position:fixed;
-inset:0;
-z-index:0;
-overflow:hidden;
-}
-
-.slide{
-position:absolute;
-inset:0;
-opacity:0;
-
-/* show more of photo */
-background-size:cover;
-background-position:center center;
-background-repeat:no-repeat;
-
-/* 6 photos */
-.s1{background-image:url('pre1.jpg'); animation-delay:0s;}
-.s2{background-image:url('pre2.jpg'); animation-delay:6s;}
-.s3{background-image:url('pre3.jpg'); animation-delay:12s;}
-.s4{background-image:url('pre4.jpg'); animation-delay:18s;}
-.s5{background-image:url('pre5.jpg'); animation-delay:24s;}
-.s6{background-image:url('pre6.jpg'); animation-delay:30s;}
-
-/* only 40% veil over photos */
-.bg-slider:after{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(255,255,255,0.40);
-z-index:2;
-}
-
-/* subtle warm romantic tint */
-.bg-slider:before{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(255,245,235,0.10);
-z-index:1;
-}
-
-@keyframes fadeSlides{
-0%{opacity:0;}
-8%{opacity:1;}
-25%{opacity:1;}
-33%{opacity:0;}
-100%{opacity:0;}
-}
-
-@keyframes kenburns{
-0%{
-transform:scale(1);
-}
-100%{
-transform:scale(1.08);
-}
+    /* Slow parallax background */
+    background:
+    linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.93)),
+    url('background1.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 /* COVER */
@@ -153,17 +100,13 @@ transform:scale(1.08);
 }
 
 /* CONTAINER */
-.container{
-    position:relative;
-    z-index:3;
-    max-width:600px;
-    margin:auto;
-    padding:40px 20px;
-    text-align:center;
-
-    background:rgba(255,255,255,0.28);
-    backdrop-filter: blur(3px);
-    border-radius:30px;
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: auto;
+    padding: 40px 20px;
+    text-align: center;
 }
 
 /* TEXT */
@@ -215,36 +158,14 @@ p {
 }
 
 /* MOBILE ADJUST */
-@media (max-width:768px){
+@media (max-width: 600px) {
+    .map-box {
+        max-width: 280px;
+    }
 
-.slide{
-background-size:cover;
-background-position:center center;
-animation:
-fadeSlides 36s infinite,
-kenburnsMobile 18s ease-in-out infinite;
-}
-
-/* lighter overlay on mobile so photos don't disappear */
-.bg-slider:after{
-background:rgba(255,255,255,0.32);
-}
-
-.container{
-margin:20px 12px;
-padding:28px 16px;
-border-radius:24px;
-}
-
-}
-
-@keyframes kenburnsMobile{
-0%{
-transform:scale(1);
-}
-100%{
-transform:scale(1.04);
-}
+    .map-box iframe {
+        height: 160px;
+    }
 }
 
 /* LINKS */
@@ -286,12 +207,8 @@ a {
 }
 
 /* CINEMATIC FADE */
-.container{
-animation:cinematicFade 2s ease;
-position:relative;
-z-index:3;
-}
-    
+.container {
+    animation: cinematicFade 2s ease;
 }
 
 @keyframes cinematicFade {
@@ -320,68 +237,10 @@ z-index:3;
     
 
 /* MOBILE */
-@media (max-width:768px){
-
-.slide{
-background-size:cover;
-background-position:center center;
-background-repeat:no-repeat;
-}
-
-/* keep each slide's own timing */
-.s1{
-animation:
-fadeSlides 36s infinite,
-kenburnsMobile 18s ease-in-out infinite;
-animation-delay:0s;
-}
-
-.s2{
-animation:
-fadeSlides 36s infinite,
-kenburnsMobile 18s ease-in-out infinite;
-animation-delay:6s;
-}
-
-.s3{
-animation:
-fadeSlides 36s infinite,
-kenburnsMobile 18s ease-in-out infinite;
-animation-delay:12s;
-}
-
-.s4{
-animation:
-fadeSlides 36s infinite,
-kenburnsMobile 18s ease-in-out infinite;
-animation-delay:18s;
-}
-
-.s5{
-animation:
-fadeSlides 36s infinite,
-kenburnsMobile 18s ease-in-out infinite;
-animation-delay:24s;
-}
-
-.s6{
-animation:
-fadeSlides 36s infinite,
-kenburnsMobile 18s ease-in-out infinite;
-animation-delay:30s;
-}
-
-/* slightly lighter veil for phones */
-.bg-slider:after{
-background:rgba(255,255,255,0.32);
-}
-
-.container{
-margin:20px 12px;
-padding:28px 16px;
-border-radius:24px;
-}
-
+@media (max-width: 600px) {
+    .names { font-size: 24px; }
+    p { font-size: 14px; }
+    .container { padding: 30px 15px; }
 }
 
 /* LUXURY EMBOSSED GOLD FRAME */
@@ -808,14 +667,6 @@ border-radius:24px;
 <!-- FLOATING FLORAL OVERLAY -->
 <div class="floral-overlay"></div>
 
-<div class="bg-slider">
-    <div class="slide s1"></div>
-    <div class="slide s2"></div>
-    <div class="slide s3"></div>
-    <div class="slide s4"></div>
-    <div class="slide s5"></div>
-    <div class="slide s6"></div>
-</div>
 <!-- COVER -->
 <div class="cover-container" id="cover" onclick="openInvitation()">
 
