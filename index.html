@@ -237,128 +237,160 @@ a {
     
 
 /* MOBILE */
-/* MOBILE OPTIMIZATION */
-@media screen and (max-width:768px){
+/* =========================
+   MOBILE SHARP REFINED VIEW
+========================= */
+@media (max-width:600px){
 
+/* General */
 body{
-background-attachment:scroll; /* fixed parallax causes issues on phones */
+    font-size:13px;
 }
 
-/* container */
 .container{
-padding:25px 18px;
-width:100%;
-box-sizing:border-box;
+    padding:22px 14px;
 }
 
-/* cover image */
+/* Cover */
 .cover-photo{
-width:92%;
-height:75vh;
+    width:82%;
+    height:58vh;
 }
 
-.cover-photo img{
-border-radius:18px;
+.open-btn{
+    font-size:11px;
+    padding:6px 12px;
 }
 
-/* names */
+/* Names */
 .names{
-font-size:26px;
-line-height:1.5;
+    font-size:22px;
+    margin:14px 0;
 }
 
-/* headings and text */
 h2{
-font-size:24px;
+    font-size:21px;
+    margin-top:20px;
+    margin-bottom:8px;
 }
 
 p{
-font-size:15px;
-line-height:1.8;
+    font-size:13px;
+    line-height:1.55;
+    margin:7px 0;
 }
 
-/* date circle smaller */
+.divider{
+    width:38px;
+    margin:15px auto;
+}
+
+/* Gold Story Box */
+.gold-frame{
+    padding:24px 18px;
+    margin:32px auto;
+}
+
+/* Wedding Date Circle Smaller */
 .date-frame{
-width:220px;
-height:220px;
+    width:200px;
+    height:200px;
+    margin:28px auto;
 }
 
 .date-text{
-font-size:18px;
+    font-size:16px;
+    line-height:1.6;
 }
 
-/* frames */
-.gold-frame,
-.rsvp-form,
-.rsvp-intro{
-padding:22px 18px;
-margin-left:auto;
-margin-right:auto;
-width:100%;
-box-sizing:border-box;
-}
-
-/* maps responsive */
+/* Maps Smaller */
 .map-box{
-width:100%;
-max-width:100%;
-padding:6px;
+    max-width:250px;
+    padding:6px;
 }
 
 .map-box iframe{
-height:220px;
+    height:145px;
 }
 
-/* gallery */
+/* Gallery tighter */
 .photo-gallery{
-grid-template-columns:1fr;
-gap:16px;
+    gap:12px;
+    margin:25px auto;
+}
+
+.gallery-item{
+    border-radius:16px;
+    padding:4px;
 }
 
 .gallery-item img{
-height:auto;
-max-height:420px;
+    height:230px;
+    border-radius:13px;
 }
 
-/* form inputs prevent iphone zoom */
+/* RSVP */
+.rsvp-intro,
+.rsvp-form{
+    padding:18px 16px;
+    border-radius:16px;
+}
+
+.rsvp-form label{
+    font-size:12px;
+}
+
 .rsvp-form input,
 .rsvp-form select,
 .rsvp-form textarea{
-font-size:16px;
+    padding:8px;
+    font-size:13px;
 }
 
-/* button easier tap */
-button,
-.open-btn,
-.view-btn{
-min-height:44px;
-font-size:15px;
+.rsvp-form button{
+    padding:10px;
+    font-size:13px;
 }
 
-/* success popup */
+/* Success popup smaller */
 .success-content{
-width:88%;
-max-width:320px;
-}
-}
-
-    *{
-box-sizing:border-box;
+    width:260px;
+    padding:20px;
 }
 
-img{
-max-width:100%;
-height:auto;
+.success-content h2{
+    font-size:20px;
 }
 
-iframe{
-max-width:100%;
+/* Sparkles smaller */
+.sparkle{
+    width:4px;
+    height:4px;
 }
 
-html{
-scroll-behavior:smooth;
--webkit-text-size-adjust:100%;
+/* Decorative rings smaller */
+.ring1{
+   inset:-7px;
 }
+.ring2{
+   inset:-13px;
+}
+.ring3{
+   inset:-18px;
+}
+
+/* Cover text */
+.cover-text h1{
+    font-size:18px;
+}
+
+.view-btn{
+    font-size:11px;
+    padding:6px 14px;
+}
+
+}
+
 /* LUXURY EMBOSSED GOLD FRAME */
 .gold-frame {
     margin: 50px auto;
