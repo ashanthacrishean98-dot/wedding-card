@@ -233,7 +233,68 @@ a {
     50% { opacity: 0.8; }
     100% { transform: translateY(-100vh) scale(1); opacity: 0; }
 }
-    
+/* BACKGROUND SLIDESHOW */
+.bg-slideshow{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    display:none;
+}
+
+.bg-slide{
+    position:absolute;
+    inset:0;
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    opacity:0;
+    transition:opacity 1.8s ease;
+
+    transform:scale(1);
+}
+
+.bg-slide.active{
+    opacity:1;
+    animation:slowZoom 18s linear forwards;
+}
+
+/* soft wedding overlay for text readability */
+.bg-slide::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,0.55);
+}
+
+@keyframes slowZoom{
+   from{
+      transform:scale(1);
+   }
+   to{
+      transform:scale(1.12);
+   }
+}
+
+/* make invitation sit above slideshow */
+.container,
+.main-content,
+.floral-overlay{
+    position:relative;
+    z-index:2;
+}
+
+/* mobile tuning */
+@media(max-width:600px){
+
+  .bg-slide{
+      background-size:cover;
+      background-position:center center;
+  }
+
+}  
 
 /* MOBILE */
 @media (max-width:600px){
@@ -685,6 +746,15 @@ body{
 
 <body>
 
+<div class="bg-slideshow" id="slideshow">
+   <div class="bg-slide active" style="background-image:url('pre1.jpg')"></div>
+   <div class="bg-slide" style="background-image:url('pre2.jpg')"></div>
+   <div class="bg-slide" style="background-image:url('pre3.jpg')"></div>
+   <div class="bg-slide" style="background-image:url('pre4.jpg')"></div>
+   <div class="bg-slide" style="background-image:url('pre5.jpg')"></div>
+   <div class="bg-slide" style="background-image:url('pre6.jpg')"></div>
+</div>
+    
 <!-- MUSIC -->
 <audio id="bgMusic" loop>
     <source src="wedding-music.mpeg" type="audio/mpeg">
@@ -879,6 +949,8 @@ function openInvitation() {
         }, 50);
 
         music.play().catch(() => {});
+        document.getElementById("slideshow").style.display="block";
+    startBackgroundSlides();
         startAnimations();
         createSparkles();
     }, 1200);
@@ -917,6 +989,41 @@ function iframeLoaded() {
 
 function closeSuccess() {
     document.getElementById("successBox").style.display = "none";
+}
+let currentSlide = 0;
+const slides = document.querySelectorAll(".bg-slide");
+
+function startBackgroundSlides(){
+
+function changeSlide(index){
+
+slides.forEach(slide=>{
+slide.classList.remove("active");
+});
+
+slides[index].classList.add("active");
+}
+
+/* change image while scrolling */
+window.addEventListener("scroll", ()=>{
+
+let scrollPos=window.scrollY;
+let pageHeight=document.body.scrollHeight-window.innerHeight;
+
+let progress=scrollPos/pageHeight;
+
+let newSlide=Math.min(
+slides.length-1,
+Math.floor(progress * slides.length)
+);
+
+if(newSlide!==currentSlide){
+currentSlide=newSlide;
+changeSlide(currentSlide);
+}
+
+});
+
 }
 </script>
 
