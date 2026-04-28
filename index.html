@@ -654,10 +654,56 @@ a {
 .main-content.show {
     opacity: 1;
 }
+/* BACKGROUND SLIDESHOW CONTAINER */
+.bg-slideshow {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* EACH SLIDE */
+.bg-slide {
+    position: absolute;
+    inset: 0;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    filter: blur(65px);
+    transform: scale(1.15);
+
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+/* ACTIVE SLIDE */
+.bg-slide.active {
+    opacity: 1;
+}
+
+/* MAKE SURE CONTENT STAYS ABOVE */
+.floral-overlay,
+.cover-container,
+.main-content {
+    position: relative;
+    z-index: 2;
+}
 </style>
 </head>
 
 <body>
+    
+<!-- BACKGROUND SLIDESHOW -->
+<div class="bg-slideshow">
+    <div class="bg-slide" style="background-image:url('pre1.jpg')"></div>
+    <div class="bg-slide" style="background-image:url('pre2.jpg')"></div>
+    <div class="bg-slide" style="background-image:url('pre3.jpg')"></div>
+    <div class="bg-slide" style="background-image:url('pre4.jpg')"></div>
+    <div class="bg-slide" style="background-image:url('pre5.jpg')"></div>
+    <div class="bg-slide" style="background-image:url('pre6.jpg')"></div>
+</div>
 
 <!-- MUSIC -->
 <audio id="bgMusic" loop>
@@ -892,6 +938,27 @@ function iframeLoaded() {
 function closeSuccess() {
     document.getElementById("successBox").style.display = "none";
 }
+/* BACKGROUND SLIDESHOW LOGIC */
+const slides = document.querySelectorAll(".bg-slide");
+let currentSlide = 0;
+
+function showSlide(index) {
+    slides.forEach((s, i) => {
+        s.classList.toggle("active", i === index);
+    });
+}
+
+function startSlideshow() {
+    showSlide(currentSlide);
+
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }, 5000); // change every 5 seconds
+}
+
+/* START WHEN PAGE LOADS */
+startSlideshow();
 </script>
 
 </body>
