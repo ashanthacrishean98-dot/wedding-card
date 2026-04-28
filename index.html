@@ -110,61 +110,25 @@ body {
 }
 
 /* TEXT */
-/* LUXURY MONOGRAM NAMES */
 .names {
     font-family: "Playfair Display", serif;
-    font-size: 38px;
-    letter-spacing: 2px;
+    font-size: 30px;
     color: #c2a15f;
-
-    text-align: center;
-    line-height: 1.3;
-
-    position: relative;
-
-    /* Gold emboss effect */
-    text-shadow:
-        0 1px 0 #fff,
-        0 2px 3px rgba(0,0,0,0.15),
-        0 0 20px rgba(194,161,95,0.25);
-
-    animation: goldGlow 4s ease-in-out infinite;
+    margin: 20px 0;
 }
 
-/* GOLD GLOW PULSE */
-@keyframes goldGlow {
-    0%, 100% {
-        text-shadow:
-            0 1px 0 #fff,
-            0 2px 3px rgba(0,0,0,0.15),
-            0 0 12px rgba(194,161,95,0.2);
-    }
-    50% {
-        text-shadow:
-            0 1px 0 #fff,
-            0 2px 6px rgba(0,0,0,0.2),
-            0 0 25px rgba(194,161,95,0.5);
-    }
+h2 {
+    font-family: "Playfair Display", serif;
+    color: #c2a15f;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
-/* MONOGRAM DIVIDER LINE */
-.names::before,
-.names::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #c2a15f, transparent);
-}
-
-.names::before {
-    top: -15px;
-}
-
-.names::after {
-    bottom: -15px;
+p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 10px 0;
 }
 
 /* DIVIDER */
@@ -273,12 +237,128 @@ a {
     
 
 /* MOBILE */
-@media (max-width: 600px) {
-    .names { font-size: 24px; }
-    p { font-size: 14px; }
-    .container { padding: 30px 15px; }
+/* MOBILE OPTIMIZATION */
+@media screen and (max-width:768px){
+
+body{
+background-attachment:scroll; /* fixed parallax causes issues on phones */
 }
 
+/* container */
+.container{
+padding:25px 18px;
+width:100%;
+box-sizing:border-box;
+}
+
+/* cover image */
+.cover-photo{
+width:92%;
+height:75vh;
+}
+
+.cover-photo img{
+border-radius:18px;
+}
+
+/* names */
+.names{
+font-size:26px;
+line-height:1.5;
+}
+
+/* headings and text */
+h2{
+font-size:24px;
+}
+
+p{
+font-size:15px;
+line-height:1.8;
+}
+
+/* date circle smaller */
+.date-frame{
+width:220px;
+height:220px;
+}
+
+.date-text{
+font-size:18px;
+}
+
+/* frames */
+.gold-frame,
+.rsvp-form,
+.rsvp-intro{
+padding:22px 18px;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+box-sizing:border-box;
+}
+
+/* maps responsive */
+.map-box{
+width:100%;
+max-width:100%;
+padding:6px;
+}
+
+.map-box iframe{
+height:220px;
+}
+
+/* gallery */
+.photo-gallery{
+grid-template-columns:1fr;
+gap:16px;
+}
+
+.gallery-item img{
+height:auto;
+max-height:420px;
+}
+
+/* form inputs prevent iphone zoom */
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea{
+font-size:16px;
+}
+
+/* button easier tap */
+button,
+.open-btn,
+.view-btn{
+min-height:44px;
+font-size:15px;
+}
+
+/* success popup */
+.success-content{
+width:88%;
+max-width:320px;
+}
+}
+
+    *{
+box-sizing:border-box;
+}
+
+img{
+max-width:100%;
+height:auto;
+}
+
+iframe{
+max-width:100%;
+}
+
+html{
+scroll-behavior:smooth;
+-webkit-text-size-adjust:100%;
+}
 /* LUXURY EMBOSSED GOLD FRAME */
 .gold-frame {
     margin: 50px auto;
@@ -726,9 +806,7 @@ a {
     <div class="divider fade-line"></div>
 
     <div class="names slide-right">
-    <b><i>Crishean</i></b><br>
-    <span style="font-size:18px; letter-spacing:3px; color:#a88a4a;">&</span><br>
-    <b><i>Dinithi</i></b>
+        <b><i>Crishean <br>&amp;<br> Dinithi</i></b>
     </div>
 
     <p class="fade-line">joyfully invite you</p>
