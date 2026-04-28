@@ -238,6 +238,19 @@ a {
 /* MOBILE */
 @media (max-width:600px){
 
+    body{
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-attachment: scroll; /* fixed causes issues on mobile */
+    }
+
+    .cover-container{
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+    }
+
     .cover-photo{
         width:82vw;
         max-width:320px;
@@ -251,7 +264,6 @@ a {
     }
 
 }
-
 /* LUXURY EMBOSSED GOLD FRAME */
 .gold-frame {
     margin: 50px auto;
