@@ -238,30 +238,35 @@ a {
 /* MOBILE */
 @media (max-width:600px){
 
-    body{
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center top;
-        background-attachment: scroll; /* fixed causes issues on mobile */
-    }
+body{
+    background:
+    linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.93)),
+    url('background1.jpg');
 
-    .cover-container{
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center top;
-    }
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 
-    .cover-photo{
-        width:82vw;
-        max-width:320px;
-        aspect-ratio:3/4;
-    }
+    /* makes image continue through scrolling */
+    background-attachment: scroll;
+}
 
-    .open-btn{
-        bottom:18px;
-        font-size:12px;
-        padding:8px 15px;
-    }
+/* same for opening cover */
+.cover-container{
+    background: url('background1.jpg') center center no-repeat;
+    background-size: cover;
+}
+
+.cover-photo{
+    width:82vw;
+    max-width:320px;
+}
+
+.open-btn{
+    bottom:18px;
+    font-size:12px;
+    padding:8px 15px;
+}
 
 }
 /* LUXURY EMBOSSED GOLD FRAME */
