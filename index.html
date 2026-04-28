@@ -8,100 +8,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 <style>
-    /* =========================
-   MOBILE OPTIMIZATION FIX
-========================= */
-@media (max-width: 600px) {
-
-    body {
-        background-attachment: scroll; /* fixes iOS lag + blur issue */
-        background-position: center;
-    }
-
-    /* TEXT */
-    .names {
-        font-size: 26px;
-        line-height: 1.4;
-    }
-
-    h2 {
-        font-size: 18px;
-    }
-
-    p {
-        font-size: 14px;
-        line-height: 1.6;
-    }
-
-    /* CONTAINER SPACING */
-    .container {
-        padding: 25px 14px;
-    }
-
-    /* COVER */
-    .cover-container {
-        padding: 0 10px;
-    }
-
-    .oval-frame {
-        width: 85vw;
-        height: 60vh;
-        max-height: 420px;
-    }
-
-    .cover-text h1 {
-        font-size: 18px;
-    }
-
-    /* DATE CIRCLE */
-    .date-frame {
-        width: 210px;
-        height: 210px;
-    }
-
-    .date-text {
-        font-size: 16px;
-    }
-
-    /* MAPS */
-    .map-box iframe {
-        height: 180px;
-    }
-
-    /* GALLERY */
-    .photo-gallery {
-        grid-template-columns: 1fr;
-        gap: 14px;
-    }
-
-    .gallery-item img {
-        height: 260px;
-    }
-
-    /* GOLD FRAME */
-    .gold-frame {
-        padding: 25px 15px;
-        margin: 30px auto;
-    }
-
-    /* RSVP */
-    .rsvp-form,
-    .rsvp-intro {
-        margin: 20px 10px;
-        padding: 18px 15px;
-    }
-
-    /* REDUCE HEAVY EFFECTS ON MOBILE */
-    .gold-frame::before,
-    .date-frame::before {
-        opacity: 0.06;
-    }
-
-    .sparkle {
-        display: none; /* improves performance on low-end phones */
-    }
-}
 body {
+
+    <!-- BACKGROUND SLIDESHOW -->
+<div class="bg-slideshow">
+    <div class="bg-slide active" style="background-image:url('pre1.jpg')"></div>
+    <div class="bg-slide" style="background-image:url('pre2.jpg')"></div>
+    <div class="bg-slide" style="background-image:url('pre3.jpg')"></div>
+    <div class="bg-slide" style="background-image:url('pre4.jpg')"></div>
+    <div class="bg-slide" style="background-image:url('pre5.jpg')"></div>
+    <div class="bg-slide" style="background-image:url('pre6.jpg')"></div>
+</div>
+    
     margin: 0;
     font-family: "Libre Baskerville", serif;
     color: #333;
@@ -192,6 +110,71 @@ body {
     z-index: 1;
 }
 
+    /* FULL SCREEN SLIDESHOW BACKGROUND */
+.bg-slideshow {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 1.5s ease, transform 6s ease;
+}
+
+.bg-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* DARK LUXURY OVERLAY FOR READABILITY */
+.bg-slideshow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(2px);
+}
+
+/* MAKE CONTENT FLOAT ABOVE BACKGROUND */
+body {
+    background: none !important;
+}
+
+.floral-overlay {
+    opacity: 0.04;
+}
+
+/* MOBILE SHARP UI */
+@media (max-width: 600px) {
+
+    .names {
+        font-size: 26px;
+        letter-spacing: 0.5px;
+    }
+
+    .gold-frame,
+    .rsvp-form,
+    .rsvp-intro {
+        margin: 20px 12px;
+        padding: 18px 14px;
+    }
+
+    .date-frame {
+        width: 220px;
+        height: 220px;
+    }
+
+    .gallery-item img {
+        height: 260px;
+    }
+}
 /* CONTAINER */
 .container {
     position: relative;
@@ -926,6 +909,20 @@ a {
 </div>
 
 <script>
+
+    let slideIndex = 0;
+const slides = document.querySelectorAll(".bg-slide");
+
+function runSlideshow() {
+    slides.forEach(s => s.classList.remove("active"));
+
+    slides[slideIndex].classList.add("active");
+
+    slideIndex = (slideIndex + 1) % slides.length;
+
+    setTimeout(runSlideshow, 4000);
+}
+    
 const cover = document.getElementById('cover');
 const music = document.getElementById('bgMusic');
 
