@@ -14,20 +14,13 @@ body {
     color: #333;
     overflow-x: hidden;
 
+    /* Slow parallax background */
     background:
-        linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.93)),
-        url('background1.jpg');
-
+    linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.93)),
+    url('background1.jpg');
     background-size: cover;
+    background-attachment: fixed;
     background-position: center;
-    background-repeat: no-repeat;
-}
-
-/* Disable fixed background on mobile */
-@media (max-width: 768px) {
-    body {
-        background-attachment: scroll;
-    }
 }
 
 /* COVER */
@@ -761,7 +754,7 @@ a {
 <div class="divider fade-line"></div>
 
 <h2 class="fade-line">Moments before Forever</h2>
-<p class="fade-line">Captured memories of the smiles and magic leading up to our big day</p>
+<p class="fade-line">Captured memories of the smiles and magic leading up to our Big day❤️</p>
 <div class="photo-gallery fade-line">
 
     <div class="gallery-item">
