@@ -114,7 +114,7 @@ body
 /* CONTAINER */
 .container {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     max-width: 600px;
     margin: auto;
     padding: 40px 20px;
@@ -508,7 +508,7 @@ a {
 .cover-container {
     position: fixed;
     inset: 0;
-    z-index: 999;
+    z-index: 10;
     
     display: flex;
     justify-content: center;
@@ -693,7 +693,7 @@ a {
 
 /* make sure content stays above slideshow */
 .floral-overlay {
-    z-index: 1;
+    z-index: 2;
 }
 
 .container,
@@ -879,6 +879,22 @@ a {
 </div>
 
 <script>
+
+/* BACKGROUND SLIDESHOW */
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+
+function changeSlide() {
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    slides[currentSlide].classList.add("active");
+}
+
+// change every 5 seconds
+setInterval(changeSlide, 5000);
+    
 const cover = document.getElementById('cover');
 const music = document.getElementById('bgMusic');
 
