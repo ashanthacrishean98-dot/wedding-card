@@ -13,7 +13,6 @@ body {
     font-family: "Libre Baskerville", serif;
     color: #333;
     overflow-x: hidden;
-    -webkit-text-size-adjust: 100%;
 
     /* Slow parallax background */
     background:
@@ -30,7 +29,7 @@ body {
     position: relative;
     width: 90%;
     max-width: 400px;
-    height: 60vh;
+    height: 70vh;
 
     display: flex;
     justify-content: center;
@@ -102,12 +101,12 @@ body {
 
 /* CONTAINER */
 .container {
-    width: 100%;
+    position: relative;
+    z-index: 2;
     max-width: 600px;
     margin: auto;
     padding: 40px 20px;
     text-align: center;
-    box-sizing: border-box;
 }
 
 /* TEXT */
@@ -288,8 +287,8 @@ a {
     
 /* LUXURY ROUND DATE FRAME */
 .date-frame {
-    width: 240px;
-    height: 240px;
+    width: 260px;
+    height: 260px;
     margin: 40px auto;
     border-radius: 50%;
     display: flex;
@@ -347,11 +346,8 @@ a {
 }
     
 /* RSVP INTRO BOX */
-.rsvp-intro,
-.rsvp-form {
-    width: 100%;
+.rsvp-intro {
     max-width: 500px;
-    box-sizing: border-box;
     margin: 40px auto;
     padding: 25px 20px;
 
@@ -639,23 +635,7 @@ a {
 }
 
 /* Mobile */
-@media(max-width:600px) {
-    h2 {
-        font-size: 20px;
-    }
-
-    .names {
-        font-size: 22px;
-        line-height: 1.4;
-    }
-
-    p {
-        font-size: 13.5px;
-        line-height: 1.6;
-    }
-}
-    
-    {
+@media(max-width:600px){
    .photo-gallery{
       grid-template-columns:1fr;
    }
@@ -664,16 +644,6 @@ a {
       height:320px;
    }
 }
-    .date-frame {
-        width: 200px;
-        height: 200px;
-    }
-
-    .date-text {
-        font-size: 16px;
-    }
-}
-    
 /* MAIN CONTENT HIDDEN INITIALLY */
 .main-content {
     display: none;
@@ -902,8 +872,7 @@ function startAnimations() {
 
 /* SPARKLES */
 function createSparkles() {
-    const count = window.innerWidth < 600 ? 10 : 25;
-for (let i = 0; i < count; i++)
+    for (let i = 0; i < 25; i++) {
         let sparkle = document.createElement("div");
         sparkle.classList.add("sparkle");
         sparkle.style.left = Math.random() * 100 + "vw";
