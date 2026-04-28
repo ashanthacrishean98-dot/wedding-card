@@ -110,25 +110,61 @@ body {
 }
 
 /* TEXT */
+/* LUXURY MONOGRAM NAMES */
 .names {
     font-family: "Playfair Display", serif;
-    font-size: 30px;
+    font-size: 38px;
+    letter-spacing: 2px;
     color: #c2a15f;
-    margin: 20px 0;
+
+    text-align: center;
+    line-height: 1.3;
+
+    position: relative;
+
+    /* Gold emboss effect */
+    text-shadow:
+        0 1px 0 #fff,
+        0 2px 3px rgba(0,0,0,0.15),
+        0 0 20px rgba(194,161,95,0.25);
+
+    animation: goldGlow 4s ease-in-out infinite;
 }
 
-h2 {
-    font-family: "Playfair Display", serif;
-    color: #c2a15f;
-    font-weight: 500;
-    margin-top: 30px;
-    margin-bottom: 10px;
+/* GOLD GLOW PULSE */
+@keyframes goldGlow {
+    0%, 100% {
+        text-shadow:
+            0 1px 0 #fff,
+            0 2px 3px rgba(0,0,0,0.15),
+            0 0 12px rgba(194,161,95,0.2);
+    }
+    50% {
+        text-shadow:
+            0 1px 0 #fff,
+            0 2px 6px rgba(0,0,0,0.2),
+            0 0 25px rgba(194,161,95,0.5);
+    }
 }
 
-p {
-    font-size: 15px;
-    line-height: 1.7;
-    margin: 10px 0;
+/* MONOGRAM DIVIDER LINE */
+.names::before,
+.names::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #c2a15f, transparent);
+}
+
+.names::before {
+    top: -15px;
+}
+
+.names::after {
+    bottom: -15px;
 }
 
 /* DIVIDER */
@@ -690,7 +726,9 @@ a {
     <div class="divider fade-line"></div>
 
     <div class="names slide-right">
-        <b><i>Crishean <br>&amp;<br> Dinithi</i></b>
+    <b><i>Crishean</i></b><br>
+    <span style="font-size:18px; letter-spacing:3px; color:#a88a4a;">&</span><br>
+    <b><i>Dinithi</i></b>
     </div>
 
     <p class="fade-line">joyfully invite you</p>
