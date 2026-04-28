@@ -17,7 +17,7 @@ body {
     /* Slow parallax background */
     background:
     linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.93)),
-    url(background1.jpg);
+    url('background1.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -100,17 +100,13 @@ body {
 }
 
 /* CONTAINER */
-.container{
-position:relative;
-z-index:2;
-max-width:600px;
-margin:auto;
-padding:40px 20px;
-text-align:center;
-
-background:rgba(255,255,255,0.28);
-backdrop-filter:blur(3px);
-border-radius:30px;
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: auto;
+    padding: 40px 20px;
+    text-align: center;
 }
 
 /* TEXT */
@@ -497,36 +493,30 @@ a {
     }
 }
 /* COVER WRAPPER */
+.cover-container {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: url('Background1.jpg') center/cover no-repeat;
 
-.cover-container{
-position:fixed;
-inset:0;
-z-index:999;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-background:
-linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)),
-url('Background1.jpg') center center/cover no-repeat;
-
-padding:20px;
-transition:opacity 1.5s ease;
+    transition: opacity 1.5s ease;
 }
 
 /* OVAL FRAME */
-.oval-frame{
-position:relative;
+.oval-frame {
+    position: relative;
+    width: 320px;
+    height: 420px;
 
-width:min(340px,90vw);
-height:min(470px,72vh);
+    border-radius: 50% / 60%;
+    overflow: hidden;
 
-border-radius:50% / 60%;
-overflow:hidden;
-
-box-shadow:
-0 15px 40px rgba(0,0,0,.35);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 /* IMAGE */
@@ -654,90 +644,6 @@ box-shadow:
       height:320px;
    }
 }
-/* BACKGROUND PHOTO SLIDESHOW */
-.bg-slider{
-position:fixed;
-inset:0;
-z-index:-3;
-overflow:hidden;
-}
-
-.slide{
-position:absolute;
-inset:0;
-opacity:0;
-
-background-size:cover;
-background-position:center center;
-background-repeat:no-repeat;
-
-animation:
-fadeSlides 36s infinite,
-kenburns 18s ease-in-out infinite;
-}
-
-.s1{background-image:url('pre1.jpg'); animation-delay:0s;}
-.s2{background-image:url('pre2.jpg'); animation-delay:6s;}
-.s3{background-image:url('pre3.jpg'); animation-delay:12s;}
-.s4{background-image:url('pre4.jpg'); animation-delay:18s;}
-.s5{background-image:url('pre5.jpg'); animation-delay:24s;}
-.s6{background-image:url('pre6.jpg'); animation-delay:30s;}
-
-.bg-slider:after{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(255,255,255,0.40);
-z-index:2;
-}
-
-.bg-slider:before{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(255,245,235,0.10);
-z-index:1;
-}
-
-@keyframes fadeSlides{
-0%{opacity:0;}
-8%{opacity:1;}
-25%{opacity:1;}
-33%{opacity:0;}
-100%{opacity:0;}
-}
-
-@keyframes kenburns{
-0%{transform:scale(1);}
-100%{transform:scale(1.08);}
-}
-
-/* MOBILE */
-@media (max-width:768px){
-
-.slide{
-animation:
-fadeSlides 36s infinite,
-kenburnsMobile 18s ease-in-out infinite;
-}
-
-.bg-slider:after{
-background:rgba(255,255,255,0.32);
-}
-
-.container{
-margin:20px 12px;
-padding:28px 16px;
-border-radius:24px;
-}
-
-}
-
-@keyframes kenburnsMobile{
-0%{transform:scale(1);}
-100%{transform:scale(1.04);}
-}
-    
 /* MAIN CONTENT HIDDEN INITIALLY */
 .main-content {
     display: none;
@@ -760,38 +666,17 @@ border-radius:24px;
 
 <!-- FLOATING FLORAL OVERLAY -->
 <div class="floral-overlay"></div>
-    
-<div class="bg-slider">
-    <div class="slide s1"></div>
-    <div class="slide s2"></div>
-    <div class="slide s3"></div>
-    <div class="slide s4"></div>
-    <div class="slide s5"></div>
-    <div class="slide s6"></div>
-</div>
 
 <!-- COVER -->
-<div class="cover-container" id="cover">
+<div class="cover-container" id="cover" onclick="openInvitation()">
 
-<div class="oval-frame">
+<div class="cover-photo">
 
-    <img src="Background1.jpg" alt="Wedding Cover">
+    <img src="Background1.jpg" alt="Cover Photo">
 
-    <div class="gold-ring ring1"></div>
-    <div class="gold-ring ring2"></div>
-    <div class="gold-ring ring3"></div>
-
-    <div class="cover-text">
-        <h1>
-            Crishean <br>
-            & <br>
-            Dinithi
-        </h1>
-    </div>
-
-    <button class="view-btn" onclick="openInvitation(event)">
+    <div class="open-btn" onclick="openInvitation(event)">
         Open Invitation
-    </button>
+    </div>
 
 </div>
 
@@ -954,8 +839,7 @@ const music = document.getElementById('bgMusic');
 let submitted = false;
 
 /* OPEN INVITATION */
-function openInvitation(e) {
-if(e) e.stopPropagation();
+function openInvitation() {
     cover.style.opacity = '0';
 
     setTimeout(() => {
