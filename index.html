@@ -8,6 +8,99 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 <style>
+    /* =========================
+   MOBILE OPTIMIZATION FIX
+========================= */
+@media (max-width: 600px) {
+
+    body {
+        background-attachment: scroll; /* fixes iOS lag + blur issue */
+        background-position: center;
+    }
+
+    /* TEXT */
+    .names {
+        font-size: 26px;
+        line-height: 1.4;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* CONTAINER SPACING */
+    .container {
+        padding: 25px 14px;
+    }
+
+    /* COVER */
+    .cover-container {
+        padding: 0 10px;
+    }
+
+    .oval-frame {
+        width: 85vw;
+        height: 60vh;
+        max-height: 420px;
+    }
+
+    .cover-text h1 {
+        font-size: 18px;
+    }
+
+    /* DATE CIRCLE */
+    .date-frame {
+        width: 210px;
+        height: 210px;
+    }
+
+    .date-text {
+        font-size: 16px;
+    }
+
+    /* MAPS */
+    .map-box iframe {
+        height: 180px;
+    }
+
+    /* GALLERY */
+    .photo-gallery {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .gallery-item img {
+        height: 260px;
+    }
+
+    /* GOLD FRAME */
+    .gold-frame {
+        padding: 25px 15px;
+        margin: 30px auto;
+    }
+
+    /* RSVP */
+    .rsvp-form,
+    .rsvp-intro {
+        margin: 20px 10px;
+        padding: 18px 15px;
+    }
+
+    /* REDUCE HEAVY EFFECTS ON MOBILE */
+    .gold-frame::before,
+    .date-frame::before {
+        opacity: 0.06;
+    }
+
+    .sparkle {
+        display: none; /* improves performance on low-end phones */
+    }
+}
 body {
     margin: 0;
     font-family: "Libre Baskerville", serif;
