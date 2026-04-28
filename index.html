@@ -8,19 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 <style>
-body 
-
-<!-- BACKGROUND SLIDESHOW -->
-<div class="bg-slideshow">
-    <div class="slide active" style="background-image:url('pre1.jpg')"></div>
-    <div class="slide" style="background-image:url('pre2.jpg')"></div>
-    <div class="slide" style="background-image:url('pre3.jpg')"></div>
-    <div class="slide" style="background-image:url('pre4.jpg')"></div>
-    <div class="slide" style="background-image:url('pre5.jpg')"></div>
-    <div class="slide" style="background-image:url('pre6.jpg')"></div>
-</div>
-    
-    {
+body {
     margin: 0;
     font-family: "Libre Baskerville", serif;
     color: #333;
@@ -114,7 +102,7 @@ body
 /* CONTAINER */
 .container {
     position: relative;
-    z-index: 3;
+    z-index: 2;
     max-width: 600px;
     margin: auto;
     padding: 40px 20px;
@@ -508,7 +496,7 @@ a {
 .cover-container {
     position: fixed;
     inset: 0;
-    z-index: 10;
+    z-index: 999;
     
     display: flex;
     justify-content: center;
@@ -665,40 +653,6 @@ a {
 
 .main-content.show {
     opacity: 1;
-}
-/* BACKGROUND SLIDESHOW */
-.bg-slideshow {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-}
-
-.bg-slideshow .slide {
-    position: absolute;
-    inset: 0;
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-    transform: scale(1.05);
-}
-
-.bg-slideshow .slide.active {
-    opacity: 1;
-}
-
-/* make sure content stays above slideshow */
-.floral-overlay {
-    z-index: 2;
-}
-
-.container,
-.main-content {
-    z-index: 2;
 }
 </style>
 </head>
@@ -879,22 +833,6 @@ a {
 </div>
 
 <script>
-
-/* BACKGROUND SLIDESHOW */
-let currentSlide = 0;
-const slides = document.querySelectorAll(".slide");
-
-function changeSlide() {
-    slides[currentSlide].classList.remove("active");
-
-    currentSlide = (currentSlide + 1) % slides.length;
-
-    slides[currentSlide].classList.add("active");
-}
-
-// change every 5 seconds
-setInterval(changeSlide, 5000);
-    
 const cover = document.getElementById('cover');
 const music = document.getElementById('bgMusic');
 
