@@ -497,30 +497,36 @@ a {
     }
 }
 /* COVER WRAPPER */
-.cover-container {
-    position: fixed;
-    inset: 0;
-    z-index: 999;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    background: url('Background1.jpg') center/cover no-repeat;
 
-    transition: opacity 1.5s ease;
+.cover-container{
+position:fixed;
+inset:0;
+z-index:999;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:
+linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)),
+url('Background1.jpg') center center/cover no-repeat;
+
+padding:20px;
+transition:opacity 1.5s ease;
 }
 
 /* OVAL FRAME */
-.oval-frame {
-    position: relative;
-    width: 320px;
-    height: 420px;
+.oval-frame{
+position:relative;
 
-    border-radius: 50% / 60%;
-    overflow: hidden;
+width:min(340px,90vw);
+height:min(470px,72vh);
 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+border-radius:50% / 60%;
+overflow:hidden;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.35);
 }
 
 /* IMAGE */
@@ -765,15 +771,27 @@ border-radius:24px;
 </div>
 
 <!-- COVER -->
-<div class="cover-container" id="cover" onclick="openInvitation()">
+<div class="cover-container" id="cover">
 
-<div class="cover-photo">
+<div class="oval-frame">
 
-    <img src="Background1.jpg" alt="Cover Photo">
+    <img src="Background1.jpg" alt="Wedding Cover">
 
-    <div class="open-btn" onclick="openInvitation(event)">
-        Open Invitation
+    <div class="gold-ring ring1"></div>
+    <div class="gold-ring ring2"></div>
+    <div class="gold-ring ring3"></div>
+
+    <div class="cover-text">
+        <h1>
+            Crishean <br>
+            & <br>
+            Dinithi
+        </h1>
     </div>
+
+    <button class="view-btn" onclick="openInvitation(event)">
+        Open Invitation
+    </button>
 
 </div>
 
@@ -936,7 +954,8 @@ const music = document.getElementById('bgMusic');
 let submitted = false;
 
 /* OPEN INVITATION */
-function openInvitation() {
+function openInvitation(e) {
+if(e) e.stopPropagation();
     cover.style.opacity = '0';
 
     setTimeout(() => {
