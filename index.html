@@ -13,6 +13,7 @@ body {
     font-family: "Libre Baskerville", serif;
     color: #333;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
 
     /* Slow parallax background */
     background:
@@ -23,54 +24,13 @@ body {
     background-position: center;
 }
 
-/* BACKGROUND SLIDESHOW */
-.bg-slideshow {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-}
-
-.bg-slideshow .slide {
-    position: absolute;
-    inset: 0;
-
-    background-size: cover;
-    background-position: center;
-
-    opacity: 0;
-    transform: scale(1.08);
-
-    transition: opacity 3s ease-in-out, transform 10s ease-in-out;
-}
-
-.bg-slideshow .slide.active {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* LIGHT OVERLAY FOR READABILITY */
-.bg-slideshow::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.85);
-    z-index: 2;
-}
-
-/* FIX LAYER ORDER */
-.floral-overlay { z-index: 1; }
-.main-content { position: relative; z-index: 3; }
-.cover-container { z-index: 999; }
-
-
 /* COVER */
 /* COVER PHOTO STYLE */
 .cover-photo {
     position: relative;
     width: 90%;
     max-width: 400px;
-    height: 70vh;
+    height: 60vh;
 
     display: flex;
     justify-content: center;
@@ -142,12 +102,12 @@ body {
 
 /* CONTAINER */
 .container {
-    position: relative;
-    z-index: 2;
+    width: 100%;
     max-width: 600px;
     margin: auto;
     padding: 40px 20px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 /* TEXT */
@@ -328,8 +288,8 @@ a {
     
 /* LUXURY ROUND DATE FRAME */
 .date-frame {
-    width: 260px;
-    height: 260px;
+    width: 240px;
+    height: 240px;
     margin: 40px auto;
     border-radius: 50%;
     display: flex;
@@ -387,8 +347,11 @@ a {
 }
     
 /* RSVP INTRO BOX */
-.rsvp-intro {
+.rsvp-intro,
+.rsvp-form {
+    width: 100%;
     max-width: 500px;
+    box-sizing: border-box;
     margin: 40px auto;
     padding: 25px 20px;
 
@@ -676,7 +639,23 @@ a {
 }
 
 /* Mobile */
-@media(max-width:600px){
+@media(max-width:600px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    .names {
+        font-size: 22px;
+        line-height: 1.4;
+    }
+
+    p {
+        font-size: 13.5px;
+        line-height: 1.6;
+    }
+}
+    
+    {
    .photo-gallery{
       grid-template-columns:1fr;
    }
@@ -685,6 +664,16 @@ a {
       height:320px;
    }
 }
+    .date-frame {
+        width: 200px;
+        height: 200px;
+    }
+
+    .date-text {
+        font-size: 16px;
+    }
+}
+    
 /* MAIN CONTENT HIDDEN INITIALLY */
 .main-content {
     display: none;
@@ -913,7 +902,8 @@ function startAnimations() {
 
 /* SPARKLES */
 function createSparkles() {
-    for (let i = 0; i < 25; i++) {
+    const count = window.innerWidth < 600 ? 10 : 25;
+for (let i = 0; i < count; i++)
         let sparkle = document.createElement("div");
         sparkle.classList.add("sparkle");
         sparkle.style.left = Math.random() * 100 + "vw";
@@ -933,21 +923,6 @@ function iframeLoaded() {
 function closeSuccess() {
     document.getElementById("successBox").style.display = "none";
 }
-
-    let currentSlide = 0;
-const slides = document.querySelectorAll(".bg-slideshow .slide");
-
-function changeSlide() {
-    slides[currentSlide].classList.remove("active");
-
-    currentSlide = (currentSlide + 1) % slides.length;
-
-    slides[currentSlide].classList.add("active");
-}
-
-/* change every 8 seconds */
-setInterval(changeSlide, 8000);
-    
 </script>
 
 </body>
