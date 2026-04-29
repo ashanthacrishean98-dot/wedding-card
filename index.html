@@ -110,6 +110,83 @@ body {
 }
 
 /* TEXT */
+/* Angel + verse section */
+.blessing-header{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+
+    margin:60px auto 70px auto;
+    max-width:540px;
+}
+
+/* Angels */
+.angel{
+    width:90px;
+    height:auto;
+    opacity:0.95;
+
+    animation: angelFloat 5s ease-in-out infinite;
+}
+
+.angel-right{
+    animation-delay:1.5s;
+}
+
+/* Verse center */
+.verse-center{
+    max-width:300px;
+}
+
+/* Bible verse styling */
+.bible-verse{
+    font-family:"Playfair Display", serif;
+    font-size:19px;
+    color:#c2a15f;
+    line-height:1.9;
+    margin:0;
+}
+
+.verse-ref{
+    font-family:"Playfair Display", serif;
+    font-size:15px;
+    margin-top:14px;
+    color:#8f7a47;
+}
+
+/* Floating angel effect */
+@keyframes angelFloat{
+ 0%{
+   transform:translateY(0);
+ }
+
+ 50%{
+   transform:translateY(-8px);
+ }
+
+100%{
+   transform:translateY(0);
+ }
+}
+
+/* Mobile */
+@media(max-width:600px){
+
+.blessing-header{
+   gap:10px;
+   margin:40px auto 55px auto;
+}
+
+.angel{
+   width:58px;
+}
+
+.bible-verse{
+   font-size:16px;
+}
+
+}
 .bible-verse{
     font-family: "Playfair Display", serif;
     font-size: 18px;
@@ -880,14 +957,24 @@ p{
 
 <h2 class="fade-line">Our Wedding Blessing</h2>
 
-<p class="bible-verse fade-line">
-“What God has joined together,<br>
-let no one separate.”
-</p>
+<div class="blessing-header fade-line">
 
-<p class="bible-verse fade-line">
-Mark 10:9
-</p>
+    <img src="angel1.png" alt="Angel Left" class="angel angel-left">
+
+    <div class="verse-center">
+        <p class="bible-verse">
+            “What God has joined together,<br>
+            let no one separate.”
+        </p>
+
+        <p class="verse-ref">
+            Mark 10:9
+        </p>
+    </div>
+
+    <img src="angel2.png" alt="Angel Right" class="angel angel-right">
+
+</div>
 
     <div style="margin-top:60px;"></div>
     <p class="slide-left">With the blessings of our parents</p>
