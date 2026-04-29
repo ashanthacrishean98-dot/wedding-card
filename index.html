@@ -175,6 +175,16 @@ body {
    transform:translateY(0);
  }
 }
+    /* FIX: preserve mirroring */
+.angel-left{
+    transform: scaleX(1);
+    animation: angelFloat 5s ease-in-out infinite;
+}
+
+.angel-right{
+    transform: scaleX(-1);
+    animation: angelFloat 5s ease-in-out infinite;
+}
 
 /* Mobile */
 @media(max-width:600px){
