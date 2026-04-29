@@ -129,14 +129,14 @@ body {
     animation: angelFloat 5s ease-in-out infinite;
 }
 
-/* Left normal */
+/* LEFT angel faces inward (toward right) */
 .angel-left{
-    transform: scaleX(-1);rotateY(180deg);
+    transform: scaleX(1);
 }
 
-/* Right mirrored */
+/* RIGHT angel faces inward (toward left) */
 .angel-right{
-    transform: scaleX(1);rotate(0deg);
+    transform: scaleX(-1);
 }
 
 
@@ -185,8 +185,16 @@ body {
 }
 
 .angel{
-   width:100px;
+   width:120px;
 }
+.angel-left{
+    transform: scaleX(1);
+}
+
+.angel-right{
+    transform: scaleX(-1);
+}
+    
 
 .bible-verse{
    font-size:16px;
